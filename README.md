@@ -268,7 +268,7 @@ This is a private product codebase. For bugs or feature requests, open an issue 
 ## 👤 Author
 
 **Rahul Rana**  
-Founder, PolishPrompt  
+Founder , PolishPrompt  
 🌐 [polishprompt.tech](https://polishprompt.tech)  
 📘 [Amazon Author Page](https://amzn.in/d/00vHMnM3)
 
