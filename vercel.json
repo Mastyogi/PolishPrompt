@@ -1,18 +1,7 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist/client",
-  "devCommand": "npm run dev",
-  "framework": "other",
-  "functions": {
-    "api/ssr.js": {
-      "maxDuration": 30,
-      "memory": 1024
-    }
-  },
+  "cleanUrls": true,
+  "framework": "vite",
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/api/ssr"
-    }
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
