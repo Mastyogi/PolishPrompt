@@ -1,15 +1,18 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": ".output/public",
+  "outputDirectory": "dist/client",
   "devCommand": "npm run dev",
   "framework": "other",
-  "serverFunctions": {
-    "directory": ".output/server"
+  "functions": {
+    "api/ssr.js": {
+      "maxDuration": 30,
+      "memory": 1024
+    }
   },
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/api/server"
+      "destination": "/api/ssr"
     }
   ]
 }
