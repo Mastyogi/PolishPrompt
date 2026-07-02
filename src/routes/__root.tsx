@@ -72,14 +72,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "PolishPrompt — Better Results from AI Prompts" },
+      {
+        name: "description",
+        content:
+          "PolishPrompt is a premium prompt learning platform with a verified prompt library, practical guides, and a deeper ebook path for better AI results.",
+      },
+      { name: "author", content: "JSS CORE LAB" },
+      { property: "og:title", content: "PolishPrompt — Better Results from AI Prompts" },
+      {
+        property: "og:description",
+        content:
+          "A premium prompt learning platform with verified prompts, practical guides, and a deeper ebook path.",
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:site", content: "@polishprompt" },
     ],
     links: [
       {

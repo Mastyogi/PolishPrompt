@@ -1,8 +1,8 @@
 # PolishPrompt 🧠✨
 
 > **AI Prompt Guide + Free Adaptive AI Diagnosis Test**
-> 
-> *"99% people use ChatGPT wrong. This is the fix."*
+>
+> _"99% people use ChatGPT wrong. This is the fix."_
 
 [![Live Site](https://img.shields.io/badge/🌐%20Live%20Site-polishprompt.tech-6d28d9?style=for-the-badge)](https://polishprompt.tech)
 [![Amazon](https://img.shields.io/badge/📘%20Buy%20Ebook-Amazon.in-FF9900?style=for-the-badge)](https://amzn.in/d/00vHMnM3)
@@ -13,7 +13,7 @@
 
 ## 📌 Overview
 
-**PolishPrompt** is a high-conversion landing page and interactive product platform for an AI prompt engineering guide — *"Smart Prompts = Smart Results"*. It combines a free adaptive AI diagnosis quiz with a premium ebook available on Amazon India.
+**PolishPrompt** is a high-conversion landing page and interactive product platform for an AI prompt engineering guide — _"Smart Prompts = Smart Results"_. It combines a free adaptive AI diagnosis quiz with a premium ebook available on Amazon India.
 
 The platform is built to educate users on **why** their AI prompts fail and **how** to fix them — backed by a 21-day structured system and 150+ field-tested prompts designed specifically for the Indian market (including Hindi/Hinglish context, WhatsApp templates, and local business use cases).
 
@@ -22,6 +22,7 @@ The platform is built to educate users on **why** their AI prompts fail and **ho
 ## 🚀 Key Features
 
 ### 🎯 Free Adaptive AI Prompt-Skill Test
+
 - **10-question adaptive quiz** that dynamically adjusts difficulty based on user performance
 - **6 skill categories** assessed: Clarity · Context · Structure · Audience · Reasoning · Refinement
 - **Difficulty-weighted scoring** — tamper-proof, computed from sealed answer state
@@ -32,6 +33,7 @@ The platform is built to educate users on **why** their AI prompts fail and **ho
 - **Session persistence** — quiz state saved to `localStorage` and restored on refresh
 
 ### 📚 Premium AI Prompt Ebook
+
 - **150+ tested prompts** hand-curated across study, work, content, and business
 - **150+ productivity bonus prompts** for daily life
 - **Plug-and-play prompt formulas** and ready frameworks
@@ -43,42 +45,43 @@ The platform is built to educate users on **why** their AI prompts fail and **ho
 - **21-day structured system** to go from zero to prompt mastery
 
 ### 🌐 Landing Page Sections
-| Section | Purpose |
-|---|---|
-| `Hero` | Hook with free quiz CTA and stat badges |
-| `BeforeAfter` | Side-by-side prompt comparison (weak vs. polished) |
-| `Mistakes` | Top prompt mistakes most people make |
-| `Quiz` | Embedded adaptive AI diagnosis test |
-| `Vision` | Outcome-focused product story |
-| `Audience` | Target user profiles |
-| `Inside` | Full ebook table of contents |
-| `Proof` | Social proof and ratings |
-| `FAQ` | Accordion FAQ (schema.org `FAQPage` structured data) |
-| `FinalCTA` | Purchase CTA with discount urgency |
-| `Footer` | Links and brand footer |
-| `StickyMobileCTA` | Persistent mobile purchase button |
+
+| Section           | Purpose                                              |
+| ----------------- | ---------------------------------------------------- |
+| `Hero`            | Hook with free quiz CTA and stat badges              |
+| `BeforeAfter`     | Side-by-side prompt comparison (weak vs. polished)   |
+| `Mistakes`        | Top prompt mistakes most people make                 |
+| `Quiz`            | Embedded adaptive AI diagnosis test                  |
+| `Vision`          | Outcome-focused product story                        |
+| `Audience`        | Target user profiles                                 |
+| `Inside`          | Full ebook table of contents                         |
+| `Proof`           | Social proof and ratings                             |
+| `FAQ`             | Accordion FAQ (schema.org `FAQPage` structured data) |
+| `FinalCTA`        | Purchase CTA with discount urgency                   |
+| `Footer`          | Links and brand footer                               |
+| `StickyMobileCTA` | Persistent mobile purchase button                    |
 
 ---
 
 ## 🛠 Tech Stack
 
-| Category | Technology |
-|---|---|
-| **Framework** | [TanStack Start](https://tanstack.com/start) (SSR/SSG React meta-framework) |
-| **Routing** | [TanStack Router](https://tanstack.com/router) (file-based, type-safe) |
-| **Server** | Nitro (via `@lovable.dev/vite-tanstack-config`) |
-| **Data Fetching** | [TanStack Query](https://tanstack.com/query) v5 |
-| **UI Components** | [shadcn/ui](https://ui.shadcn.com/) (Radix UI primitives) |
-| **Styling** | [Tailwind CSS v4](https://tailwindcss.com/) + `tw-animate-css` |
-| **Animations** | [Framer Motion](https://www.framer.com/motion/) |
-| **Icons** | [Lucide React](https://lucide.dev/) |
-| **PDF Generation** | [jsPDF](https://github.com/parallax/jsPDF) |
-| **Forms** | [React Hook Form](https://react-hook-form.com/) + Zod |
-| **Charts** | [Recharts](https://recharts.org/) |
-| **Build Tool** | [Vite](https://vitejs.dev/) v7 |
-| **Language** | TypeScript 5.8 |
-| **Package Manager** | [Bun](https://bun.sh/) |
-| **Linting** | ESLint 9 + Prettier |
+| Category            | Technology                                                                  |
+| ------------------- | --------------------------------------------------------------------------- |
+| **Framework**       | [TanStack Start](https://tanstack.com/start) (SSR/SSG React meta-framework) |
+| **Routing**         | [TanStack Router](https://tanstack.com/router) (file-based, type-safe)      |
+| **Server**          | Nitro (via `@lovable.dev/vite-tanstack-config`)                             |
+| **Data Fetching**   | [TanStack Query](https://tanstack.com/query) v5                             |
+| **UI Components**   | [shadcn/ui](https://ui.shadcn.com/) (Radix UI primitives)                   |
+| **Styling**         | [Tailwind CSS v4](https://tailwindcss.com/) + `tw-animate-css`              |
+| **Animations**      | [Framer Motion](https://www.framer.com/motion/)                             |
+| **Icons**           | [Lucide React](https://lucide.dev/)                                         |
+| **PDF Generation**  | [jsPDF](https://github.com/parallax/jsPDF)                                  |
+| **Forms**           | [React Hook Form](https://react-hook-form.com/) + Zod                       |
+| **Charts**          | [Recharts](https://recharts.org/)                                           |
+| **Build Tool**      | [Vite](https://vitejs.dev/) v7                                              |
+| **Language**        | TypeScript 5.8                                                              |
+| **Package Manager** | [Bun](https://bun.sh/)                                                      |
+| **Linting**         | ESLint 9 + Prettier                                                         |
 
 ---
 
@@ -194,12 +197,14 @@ intro → playing → done
 ```
 
 **Adaptive difficulty algorithm:**
+
 - Starts at `easy`
 - If user answers **correctly AND quickly** (< half the timer) → bumps to harder difficulty
 - If user answers **incorrectly** → drops to easier difficulty
 - Category rotation ensures diverse skill coverage each round
 
 **Scoring:**
+
 ```
 Difficulty weights: easy = 1pt · medium = 2pt · hard = 3pt
 Score % = (earned weighted points / max weighted points) × 100
@@ -251,11 +256,11 @@ Works with **free versions** of ChatGPT, Gemini, Claude, and most major AI model
 
 ## 📄 Pages
 
-| Route | Description |
-|---|---|
-| `/` | Main landing page with quiz and ebook CTA |
-| `/privacy` | Privacy policy |
-| `/sitemap.xml` | Dynamic XML sitemap |
+| Route          | Description                               |
+| -------------- | ----------------------------------------- |
+| `/`            | Main landing page with quiz and ebook CTA |
+| `/privacy`     | Privacy policy                            |
+| `/sitemap.xml` | Dynamic XML sitemap                       |
 
 ---
 

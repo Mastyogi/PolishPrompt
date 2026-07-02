@@ -9,8 +9,8 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 export default defineConfig({
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-    // nitro/vite builds from this
-    server: { entry: "server" },
+    // This must be the explicit source path so Vite preview can resolve the emitted server bundle.
+    server: { entry: "./src/server.ts" },
   },
   nitro: {
     prerender: {
@@ -22,5 +22,5 @@ export default defineConfig({
       publicDir: "dist/client",
       serverDir: "dist/server",
     },
-  },
+  } as any,
 });

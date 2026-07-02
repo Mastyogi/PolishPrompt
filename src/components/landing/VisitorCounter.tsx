@@ -14,11 +14,14 @@ export function VisitorCounter() {
 
   useEffect(() => {
     setCount(baseCount());
-    const id = setInterval(() => {
-      setCount((c) => (c ?? baseCount()) + 1 + Math.floor(Math.random() * 3));
-      setPulse(true);
-      setTimeout(() => setPulse(false), 600);
-    }, 6000 + Math.random() * 8000);
+    const id = setInterval(
+      () => {
+        setCount((c) => (c ?? baseCount()) + 1 + Math.floor(Math.random() * 3));
+        setPulse(true);
+        setTimeout(() => setPulse(false), 600);
+      },
+      6000 + Math.random() * 8000,
+    );
     return () => clearInterval(id);
   }, []);
 
@@ -29,7 +32,9 @@ export function VisitorCounter() {
         <span className="relative inline-flex h-2 w-2 rounded-full bg-[oklch(0.62_0.22_145)]" />
       </span>
       <Users className="h-3.5 w-3.5 text-muted-foreground" />
-      <span className={`font-semibold tabular-nums transition ${pulse ? "text-gradient-primary scale-110" : ""}`}>
+      <span
+        className={`font-semibold tabular-nums transition ${pulse ? "text-gradient-primary scale-110" : ""}`}
+      >
         {count !== null ? count.toLocaleString() : "—"}
       </span>
       <span className="text-muted-foreground">readers this month</span>

@@ -29,7 +29,12 @@ function PrivacyPage() {
       <article className="mx-auto max-w-3xl px-4 py-16">
         <h1 className="text-4xl font-bold sm:text-5xl">Privacy Policy</h1>
         <p className="mt-3 text-sm text-muted-foreground">
-          Last updated: {new Date().toLocaleDateString("en-IN", { year: "numeric", month: "long", day: "numeric" })}
+          Last updated:{" "}
+          {new Date().toLocaleDateString("en-IN", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
         </p>
 
         <div className="prose mt-8 space-y-6 text-foreground/85">
@@ -67,8 +72,8 @@ function PrivacyPage() {
           <section>
             <h2 className="text-xl font-semibold">3. What we don't collect</h2>
             <p className="mt-2 text-sm">
-              No accounts, no passwords, no cross-site tracking, no third-party advertising
-              cookies, no selling of personal data.
+              No accounts, no passwords, no cross-site tracking, no third-party advertising cookies,
+              no selling of personal data.
             </p>
           </section>
 
@@ -83,8 +88,8 @@ function PrivacyPage() {
           <section>
             <h2 className="text-xl font-semibold">5. Your rights</h2>
             <p className="mt-2 text-sm">
-              Clear your browser storage at any time to wipe your test progress and theme. Email
-              us to request deletion of any message you've sent us.
+              Clear your browser storage at any time to wipe your test progress and theme. Email us
+              to request deletion of any message you've sent us.
             </p>
           </section>
 

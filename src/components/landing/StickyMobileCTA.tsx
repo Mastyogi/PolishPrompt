@@ -6,7 +6,9 @@ export function StickyMobileCTA() {
           <div className="font-semibold">60% Off · Limited Time</div>
           <div className="text-muted-foreground">Instant access · Lifetime updates</div>
         </div>
-        <a href="#cta" className="btn-primary !py-2 !px-4 text-sm">Unlock Ebook</a>
+        <a href="#cta" className="btn-primary !py-2 !px-4 text-sm">
+          Unlock Ebook
+        </a>
       </div>
     </div>
   );

@@ -14,16 +14,24 @@ export function Nav() {
             <span className="text-base sm:text-lg">PolishPrompt</span>
           </Link>
           <div className="hidden items-center gap-6 text-sm text-muted-foreground lg:flex">
-            <a href="#mistakes" className="hover:text-foreground">Mistakes</a>
-            <a href="#quiz" className="hover:text-foreground">AI Test</a>
-            <a href="#inside" className="hover:text-foreground">Inside</a>
-            <a href="#faq" className="hover:text-foreground">FAQ</a>
+            <Link to="/library" className="hover:text-foreground">
+              Library
+            </Link>
+            <Link to="/guides" className="hover:text-foreground">
+              Guides
+            </Link>
+            <Link to="/about" className="hover:text-foreground">
+              About
+            </Link>
+            <Link to="/contact" className="hover:text-foreground">
+              Contact
+            </Link>
           </div>
           <div className="flex items-center gap-2">
             <ThemeToggle />
-            <a href="#cta" className="btn-primary !py-2 !px-3 text-xs sm:!px-4 sm:text-sm">
-              Unlock
-            </a>
+            <Link to="/subscribe" className="btn-primary !py-2 !px-3 text-xs sm:!px-4 sm:text-sm">
+              Subscribe
+            </Link>
           </div>
         </nav>
       </div>

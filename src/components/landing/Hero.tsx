@@ -17,7 +17,8 @@ export function Hero() {
           99% People Use ChatGPT <span className="text-gradient-primary">Wrong.</span>
         </h1>
         <p className="mt-5 text-lg text-foreground/80 sm:text-xl">
-          And that's why they keep getting <span className="font-semibold">generic AI answers.</span>
+          And that's why they keep getting{" "}
+          <span className="font-semibold">generic AI answers.</span>
         </p>
         <p className="mx-auto mt-3 max-w-2xl text-base text-muted-foreground">
           Most people blame AI. Reality? Their prompts are broken. Take the free 4-minute AI

@@ -1,18 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Background } from "@/components/landing/Background";
-import { Nav } from "@/components/landing/Nav";
-import { Hero } from "@/components/landing/Hero";
-import { BeforeAfter } from "@/components/landing/BeforeAfter";
-import { Mistakes } from "@/components/landing/Mistakes";
-import { Quiz } from "@/components/landing/quiz/Quiz";
-import { Vision } from "@/components/landing/Vision";
-import { Audience } from "@/components/landing/Audience";
-import { Inside } from "@/components/landing/Inside";
-import { Proof } from "@/components/landing/Proof";
-import { FAQ, FAQ_ITEMS } from "@/components/landing/FAQ";
-import { FinalCTA } from "@/components/landing/FinalCTA";
-import { StickyMobileCTA } from "@/components/landing/StickyMobileCTA";
-import { Footer } from "@/components/landing/Footer";
+import { PlatformExperience } from "@/components/landing/PlatformExperience";
+import { FAQ_ITEMS } from "@/lib/content";
 
 const SITE = "https://polishprompt.tech";
 
@@ -20,8 +8,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title:
-          "PolishPrompt — AI Prompt Guide, Free AI Diagnosis Test & 150+ ChatGPT Prompts",
+        title: "PolishPrompt — AI Prompt Guide, Free AI Diagnosis Test & 150+ ChatGPT Prompts",
       },
       {
         name: "description",
@@ -47,7 +34,8 @@ export const Route = createFileRoute("/")({
       { name: "twitter:title", content: "PolishPrompt — AI Prompt Guide & Free AI Diagnosis Test" },
       {
         name: "twitter:description",
-        content: "Free adaptive AI diagnosis test + 150+ tested ChatGPT prompts. Master AI in 21 days.",
+        content:
+          "Free adaptive AI diagnosis test + 150+ tested ChatGPT prompts. Master AI in 21 days.",
       },
     ],
     links: [
@@ -118,8 +106,8 @@ export const Route = createFileRoute("/")({
               "@type": "FAQPage",
               mainEntity: FAQ_ITEMS.map((it) => ({
                 "@type": "Question",
-                name: it.q,
-                acceptedAnswer: { "@type": "Answer", text: it.a },
+                name: it.question,
+                acceptedAnswer: { "@type": "Answer", text: it.answer },
               })),
             },
           ],
@@ -131,22 +119,5 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  return (
-    <main className="relative min-h-screen">
-      <Background />
-      <Nav />
-      <Hero />
-      <BeforeAfter />
-      <Mistakes />
-      <Quiz />
-      <Vision />
-      <Audience />
-      <Inside />
-      <Proof />
-      <FAQ />
-      <FinalCTA />
-      <Footer />
-      <StickyMobileCTA />
-    </main>
-  );
+  return <PlatformExperience />;
 }
