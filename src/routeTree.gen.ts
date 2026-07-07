@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SubscribeRouteImport } from './routes/subscribe'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as LibraryRouteImport } from './routes/library'
 import { Route as GuidesRouteImport } from './routes/guides'
@@ -31,11 +30,6 @@ const SubscribeRoute = SubscribeRouteImport.update({
   path: '/subscribe',
   getParentRoute: () => rootRouteImport,
 } as any).lazy(() => import('./routes/subscribe.lazy').then((d) => d.Route))
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -84,7 +78,6 @@ export interface FileRoutesByFullPath {
   '/guides': typeof GuidesRouteWithChildren
   '/library': typeof LibraryRouteWithChildren
   '/privacy': typeof PrivacyRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/subscribe': typeof SubscribeRoute
   '/terms': typeof TermsRoute
   '/guides/$slug': typeof GuidesSlugRoute
@@ -97,7 +90,6 @@ export interface FileRoutesByTo {
   '/guides': typeof GuidesRouteWithChildren
   '/library': typeof LibraryRouteWithChildren
   '/privacy': typeof PrivacyRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/subscribe': typeof SubscribeRoute
   '/terms': typeof TermsRoute
   '/guides/$slug': typeof GuidesSlugRoute
@@ -111,7 +103,6 @@ export interface FileRoutesById {
   '/guides': typeof GuidesRouteWithChildren
   '/library': typeof LibraryRouteWithChildren
   '/privacy': typeof PrivacyRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/subscribe': typeof SubscribeRoute
   '/terms': typeof TermsRoute
   '/guides/$slug': typeof GuidesSlugRoute
@@ -126,7 +117,6 @@ export interface FileRouteTypes {
     | '/guides'
     | '/library'
     | '/privacy'
-    | '/sitemap.xml'
     | '/subscribe'
     | '/terms'
     | '/guides/$slug'
@@ -139,7 +129,6 @@ export interface FileRouteTypes {
     | '/guides'
     | '/library'
     | '/privacy'
-    | '/sitemap.xml'
     | '/subscribe'
     | '/terms'
     | '/guides/$slug'
@@ -152,7 +141,6 @@ export interface FileRouteTypes {
     | '/guides'
     | '/library'
     | '/privacy'
-    | '/sitemap.xml'
     | '/subscribe'
     | '/terms'
     | '/guides/$slug'
@@ -166,7 +154,6 @@ export interface RootRouteChildren {
   GuidesRoute: typeof GuidesRouteWithChildren
   LibraryRoute: typeof LibraryRouteWithChildren
   PrivacyRoute: typeof PrivacyRoute
-  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SubscribeRoute: typeof SubscribeRoute
   TermsRoute: typeof TermsRoute
 }
@@ -185,13 +172,6 @@ declare module '@tanstack/react-router' {
       path: '/subscribe'
       fullPath: '/subscribe'
       preLoaderRoute: typeof SubscribeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -282,7 +262,6 @@ const rootRouteChildren: RootRouteChildren = {
   GuidesRoute: GuidesRouteWithChildren,
   LibraryRoute: LibraryRouteWithChildren,
   PrivacyRoute: PrivacyRoute,
-  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SubscribeRoute: SubscribeRoute,
   TermsRoute: TermsRoute,
 }

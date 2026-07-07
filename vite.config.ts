@@ -15,7 +15,7 @@ export default defineConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ["/sitemap.xml", "/robots.txt"],
+      routes: ["/robots.txt"],
     },
     output: {
       dir: "dist",
