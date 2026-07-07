@@ -2,38 +2,22 @@ export const SITE_NAME = "PolishPrompt";
 export const SITE_URL = "https://polishprompt.tech";
 export const AMAZON_URL = "https://amzn.in/d/00vHMnM3";
 
-export type PromptCategory =
-  | "Content Writing"
-  | "Marketing"
-  | "Study"
-  | "Business"
-  | "Career"
-  | "Coding"
-  | "Productivity"
-  | "Daily Life"
-  | "Research"
-  | "Social Media";
 
-export type PromptModel = "ChatGPT" | "Claude" | "Gemini" | "All Models";
+export type PromptCategory = "business" | "marketing" | "reasoning" | "indian" | "productivity";
+
+export interface PromptVariable {
+  id: string;
+  label: string;
+  example: string;
+}
 
 export interface PromptRecord {
-  slug: string;
+  id: string;
   title: string;
-  description: string;
-  fullPrompt: string;
   category: PromptCategory;
-  model: PromptModel;
-  difficulty: "Beginner" | "Intermediate" | "Advanced";
-  usageCount: number;
-  trending: boolean;
+  template: string;
+  variables: PromptVariable[];
   featured: boolean;
-  updatedAt: string;
-  tags: string[];
-  exampleOutput: string;
-  tips: string[];
-  variations: string[];
-  relatedPromptSlugs: string[];
-  useCase: string;
 }
 
 export interface GuidePost {
@@ -59,206 +43,782 @@ export interface FaqItem {
   answer: string;
 }
 
-export const CATEGORIES: Array<{ name: PromptCategory; description: string; count: number }> = [
-  { name: "Content Writing", description: "Turn rough notes into polished pieces.", count: 8 },
-  { name: "Marketing", description: "Build better campaign copy and strategy prompts.", count: 6 },
-  { name: "Study", description: "Create revision plans, summaries and learning loops.", count: 7 },
-  { name: "Business", description: "Draft sharper proposals, emails and plans.", count: 5 },
-  { name: "Career", description: "Refine resumes, interviews and portfolio work.", count: 4 },
-  {
-    name: "Coding",
-    description: "Structure debugging, review and implementation prompts.",
-    count: 5,
-  },
-  { name: "Productivity", description: "Plan your week and remove decision fatigue.", count: 6 },
-  { name: "Daily Life", description: "Make everyday tasks easier and clearer.", count: 4 },
-  { name: "Research", description: "Summarize sources and synthesize insights.", count: 5 },
-  { name: "Social Media", description: "Shape content ideas that actually feel native.", count: 6 },
+
+export const CATEGORIES: Array<{ name: string; description: string; count: number }> = [
+  { name: "business", description: "Business & Operations Excellence", count: 10 },
+  { name: "marketing", description: "Marketing, Content & Copywriting", count: 10 },
+  { name: "reasoning", description: "Advanced Reasoning & Agentic Frameworks", count: 10 },
+  { name: "indian", description: "Local Indian Context & Hinglish Business", count: 10 },
+  { name: "productivity", description: "Daily Productivity, Learning & Self-Growth", count: 10 },
 ];
 
 export const PROMPTS: PromptRecord[] = [
   {
-    slug: "clear-briefs-for-better-ai-output",
-    title: "Clear Briefs for Better AI Output",
-    description:
-      "Turn fuzzy requests into focused prompts that produce useful answers on the first try.",
-    fullPrompt:
-      "You are an expert communication coach. I will give you a rough idea. Rewrite it into a clear brief with: goal, audience, context, constraints, output format, and success criteria. Ask up to three clarifying questions if needed, then produce the best version of the prompt.",
-    category: "Content Writing",
-    model: "ChatGPT",
-    difficulty: "Beginner",
-    usageCount: 1840,
-    trending: true,
-    featured: true,
-    updatedAt: "2026-06-28",
-    tags: ["writing", "clarity", "framework"],
-    exampleOutput:
-      "A polished brief for writing a newsletter intro that speaks to students and includes a CTA.",
-    tips: ["Always define the outcome first.", "Mention the target audience clearly."],
-    variations: ["Short version", "Long version", "Multi-step version"],
-    relatedPromptSlugs: ["study-plan-from-notes", "research-summary-in-plain-english"],
-    useCase: "Best for turning vague requests into ready-to-use prompts.",
+    "id": "p1",
+    "title": "The RACI Matrix Creator",
+    "category": "business",
+    "template": "Act as an Agile Project Manager. Create a clean Tabular Layout RACI Matrix for our new\nproject: {{var_1}}. Break it down into 5 key phases.\nAnti-Prompts: No conversational filler, start directly with the table.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Project Name",
+        "example": "Launching a Shopify Store"
+      }
+    ],
+    "featured": true
   },
   {
-    slug: "study-plan-from-notes",
-    title: "Study Plan from Notes",
-    description: "Turn scattered study notes into a focused plan that improves retention.",
-    fullPrompt:
-      "Act as a calm study coach. I will paste my notes. Create a 7-day revision plan with daily goals, priority topics, active recall tasks, and a short review routine. Keep the tone motivating and practical.",
-    category: "Study",
-    model: "Gemini",
-    difficulty: "Beginner",
-    usageCount: 1520,
-    trending: true,
-    featured: true,
-    updatedAt: "2026-06-24",
-    tags: ["study", "revision", "productivity"],
-    exampleOutput: "A 7-day plan with focused goals and revision checkpoints.",
-    tips: ["Paste the most important topics only."],
-    variations: ["Exam prep version", "Semester plan version"],
-    relatedPromptSlugs: ["clear-briefs-for-better-ai-output", "research-summary-in-plain-english"],
-    useCase: "Ideal for students who need structure without overwhelm.",
+    "id": "p2",
+    "title": "The 80/20 Rule Business Optimizer",
+    "category": "business",
+    "template": "Analyze my current business operations: {{var_1}}. Use the\nPareto Principle (80/20 Rule) to identify the top 20% tasks causing 80% of the bottlenecks, and\nthe top 20% products driving 80% revenue. Give actionable steps.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Describe business",
+        "example": "I run a local gym"
+      }
+    ],
+    "featured": false
   },
   {
-    slug: "research-summary-in-plain-english",
-    title: "Research Summary in Plain English",
-    description: "Summarize dense material into clear takeaways for work or study.",
-    fullPrompt:
-      "You are a careful research assistant. Read the material I give you and turn it into: 1) a 5-bullet summary, 2) the main argument, 3) three key takeaways, and 4) a one-sentence conclusion. Use plain language.",
-    category: "Research",
-    model: "Claude",
-    difficulty: "Intermediate",
-    usageCount: 1290,
-    trending: false,
-    featured: true,
-    updatedAt: "2026-06-20",
-    tags: ["research", "summaries", "clarity"],
-    exampleOutput: "A concise summary that reads like a human explanation instead of a textbook.",
-    tips: ["Add the source type if you want a tailored summary."],
-    variations: ["Executive summary", "Student-friendly summary"],
-    relatedPromptSlugs: ["clear-briefs-for-better-ai-output", "study-plan-from-notes"],
-    useCase: "Useful for making heavy information usable fast.",
+    "id": "p3",
+    "title": "The OKR Architect",
+    "category": "business",
+    "template": "Convert this broad business goal: '{{var_1}}' into 3\nhighly specific, measurable OKRs (Objectives and Key Results). Use the RISEN framework and\nprovide the output in clean Markdown.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "e.g., Increase our website sales by next quarter",
+        "example": ""
+      }
+    ],
+    "featured": true
   },
   {
-    slug: "linkedin-post-pack-from-one-idea",
-    title: "LinkedIn Post Pack from One Idea",
-    description: "Expand one insight into a week of social content with a consistent voice.",
-    fullPrompt:
-      "You are a social strategist. I will give you one idea. Turn it into 5 LinkedIn post options, each with a hook, body, CTA and a post tone. Keep the structure simple and useful.",
-    category: "Social Media",
-    model: "All Models",
-    difficulty: "Intermediate",
-    usageCount: 1180,
-    trending: true,
-    featured: false,
-    updatedAt: "2026-06-18",
-    tags: ["social", "content", "marketing"],
-    exampleOutput: "Five post drafts built around one core idea.",
-    tips: ["Share your audience and tone to improve relevance."],
-    variations: ["Short post version", "Carousel idea version"],
-    relatedPromptSlugs: ["clear-briefs-for-better-ai-output", "smart-email-reply"],
-    useCase: "Great for creators and founders who want more output from less effort.",
+    "id": "p4",
+    "title": "Automated SOP Generator",
+    "category": "business",
+    "template": "Write a step-by-step Standard Operating Procedure (SOP) for {{var_1}}. Use a professional and empathetic tone. Include a troubleshooting\nsection for common edge cases.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Task",
+        "example": "Handling a\ncustomer refund request"
+      }
+    ],
+    "featured": false
   },
   {
-    slug: "smart-email-reply",
-    title: "Smart Email Reply",
-    description: "Draft a professional reply that sounds clear, warm and efficient.",
-    fullPrompt:
-      "You are a polished communication assistant. Rewrite the incoming message I provide into a professional response. Keep it concise, helpful and natural. Include a subject line if needed.",
-    category: "Business",
-    model: "ChatGPT",
-    difficulty: "Beginner",
-    usageCount: 1110,
-    trending: false,
-    featured: false,
-    updatedAt: "2026-06-16",
-    tags: ["email", "business", "communication"],
-    exampleOutput: "A clear, well-structured response for a client or teammate.",
-    tips: ["Mention the desired tone if you want it more formal or softer."],
-    variations: ["Friendly version", "Executive version"],
-    relatedPromptSlugs: ["clear-briefs-for-better-ai-output", "linkedin-post-pack-from-one-idea"],
-    useCase: "Helpful for client communications and follow-ups.",
+    "id": "p5",
+    "title": "Competitor SWOT Analysis",
+    "category": "business",
+    "template": "Act as a Top-tier Market Research Analyst. Conduct a detailed SWOT Analysis comparing my\nbusiness {{var_1}} with our main competitor {{var_2}}. Output\nformat: Bullets under clear H2 headings.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Your Business Name/Niche",
+        "example": ""
+      },
+      {
+        "id": "var_2",
+        "label": "Competitor Name",
+        "example": ""
+      }
+    ],
+    "featured": false
   },
   {
-    slug: "career-story-for-resume",
-    title: "Career Story for Resume",
-    description: "Pull your experience into a stronger narrative for CVs and portfolios.",
-    fullPrompt:
-      "Act as a hiring strategist. I will give you my work history. Turn it into a concise career story with three strengths, one core impact, and a short resume summary. Keep the language clear and confident.",
-    category: "Career",
-    model: "Claude",
-    difficulty: "Intermediate",
-    usageCount: 980,
-    trending: false,
-    featured: false,
-    updatedAt: "2026-06-12",
-    tags: ["career", "resume", "storytelling"],
-    exampleOutput: "A résumé summary that highlights impact rather than just job titles.",
-    tips: ["Add metrics if you have them."],
-    variations: ["Portfolio version", "Interview version"],
-    relatedPromptSlugs: ["smart-email-reply", "productivity-weekly-planner"],
-    useCase: "Useful when your résumé feels flat or generic.",
+    "id": "p6",
+    "title": "Pricing Strategy Consultant",
+    "category": "business",
+    "template": "I am launching {{var_1}}. My target audience is {{var_2}} and my cost per unit is {{var_3}}. Suggest 3 different pricing models\n(Freemium, Tiered, or Value-based) with pros and cons for each.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Product Name/Service",
+        "example": ""
+      },
+      {
+        "id": "var_2",
+        "label": "Audience",
+        "example": "college\nstudents in India"
+      },
+      {
+        "id": "var_3",
+        "label": "Amount",
+        "example": ""
+      }
+    ],
+    "featured": false
   },
   {
-    slug: "productivity-weekly-planner",
-    title: "Weekly Planner with Energy Levels",
-    description: "Build a realistic weekly plan that respects your energy and commitments.",
-    fullPrompt:
-      "You are a practical productivity coach. Help me plan my week using my tasks, deadlines and energy levels. Organize the week into high-focus work blocks, admin time, and recovery time. Keep it realistic.",
-    category: "Productivity",
-    model: "ChatGPT",
-    difficulty: "Beginner",
-    usageCount: 940,
-    trending: false,
-    featured: false,
-    updatedAt: "2026-06-10",
-    tags: ["planning", "energy", "weekly"],
-    exampleOutput: "A practical weekly schedule with intentional focus blocks.",
-    tips: ["Mention your most energy-heavy hours."],
-    variations: ["Student version", "Freelancer version"],
-    relatedPromptSlugs: ["study-plan-from-notes", "smart-email-reply"],
-    useCase: "Best for reducing overwhelm and creating a calmer week.",
+    "id": "p7",
+    "title": "The Customer Avatar Builder",
+    "category": "business",
+    "template": "Create a deeply detailed Ideal Customer Persona (Avatar) for a person looking for {{var_1}}. Include Demographics, Psychographics, Core Frustrations, Buying Triggers,\nand Media Consumption Habits.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Your\nProduct/Service",
+        "example": ""
+      }
+    ],
+    "featured": false
   },
   {
-    slug: "daily-life-assistant",
-    title: "Daily Life Assistant",
-    description: "Turn a busy day into a calmer action plan.",
-    fullPrompt:
-      "You are a thoughtful daily-life assistant. I will share my schedule and responsibilities. Create a realistic plan for the day, including priorities, quick wins, and a simple evening reset.",
-    category: "Daily Life",
-    model: "All Models",
-    difficulty: "Beginner",
-    usageCount: 760,
-    trending: false,
-    featured: false,
-    updatedAt: "2026-06-08",
-    tags: ["daily", "routine", "life"],
-    exampleOutput: "A sensible day plan that leaves room for real life.",
-    tips: ["Add your must-do tasks to make it practical."],
-    variations: ["Weekend version", "Busy-parent version"],
-    relatedPromptSlugs: ["productivity-weekly-planner", "study-plan-from-notes"],
-    useCase: "Perfect for everyday planning with less friction.",
+    "id": "p8",
+    "title": "Employee Onboarding Blueprint",
+    "category": "business",
+    "template": "Design a 7-day onboarding schedule for a newly hired {{var_1}} in a\nremote startup setup. Ensure it balances learning, tool setup, and small practical wins.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Role",
+        "example": "Social Media Executive"
+      }
+    ],
+    "featured": false
   },
   {
-    slug: "code-review-checklist",
-    title: "Code Review Checklist",
-    description: "Turn messy code context into a clear review prompt for better debugging.",
-    fullPrompt:
-      "You are a senior engineer. Review the code I share and provide: 1) main risks, 2) improvements, 3) test ideas, and 4) a short summary of what to change first. Use a practical and supportive tone.",
-    category: "Coding",
-    model: "Claude",
-    difficulty: "Advanced",
-    usageCount: 840,
-    trending: true,
-    featured: false,
-    updatedAt: "2026-06-06",
-    tags: ["coding", "review", "debugging"],
-    exampleOutput: "A concise review with actionable next steps.",
-    tips: ["Include the stack and current issue for stronger feedback."],
-    variations: ["Security review", "Performance review"],
-    relatedPromptSlugs: ["clear-briefs-for-better-ai-output", "productivity-weekly-planner"],
-    useCase: "Useful for developers who want better review output from AI.",
+    "id": "p9",
+    "title": "B2B Cold Email Pitch Master",
+    "category": "business",
+    "template": "Write a high-converting B2B Cold Email targeting {{var_1}}. Pitch our service: {{var_2}}. Hook them in the first 2 lines. Anti-Prompt: No\ncheesy lines, keep it strictly professional.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Target Executive",
+        "example": "CTOs of tech\ncompanies"
+      },
+      {
+        "id": "var_2",
+        "label": "Your Service",
+        "example": ""
+      }
+    ],
+    "featured": false
   },
+  {
+    "id": "p10",
+    "title": "Contract/Agreement Reviewer",
+    "category": "business",
+    "template": "Act as a corporate legal advisor. Review this clause/agreement text: '{{var_1}}'. Identify any\nhidden risks, unfair liabilities, or ambiguous terms that could harm my business. Give\nsuggestions to rewrite them safely.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Paste text",
+        "example": ""
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p11",
+    "title": "30-Day Social Media Content Calendar",
+    "category": "marketing",
+    "template": "Act as a Growth Marketer. Create a 30-day Content Calendar grid for {{var_1}} targeting {{var_2}}. Layout: Columns for Day, Topic, Content Hook, and\nCall-to-Action (CTA). Use Hinglish style for hooks.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Platform",
+        "example": "e.g.,\nInstagram"
+      },
+      {
+        "id": "var_2",
+        "label": "Target Audience",
+        "example": ""
+      }
+    ],
+    "featured": true
+  },
+  {
+    "id": "p12",
+    "title": "The AIDA Framework Ad Copy",
+    "category": "marketing",
+    "template": "Write a highly engaging ad copy for {{var_1}}. Follow the strict AIDA framework:\nAttention (Hook), Interest (Problem), Desire (Benefits), Action (CTA). Create 3 distinct variations\nwith different hooks.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Product Name",
+        "example": ""
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p13",
+    "title": "The Viral LinkedIn Hook Generator",
+    "category": "marketing",
+    "template": "Take this boring industry insight: '{{var_1}}'. Rewrite it into 5 punchy, pattern-interrupting\nLinkedIn hooks that compel readers to click 'See More'. Tone: Authoritative yet conversational.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Paste text/idea",
+        "example": ""
+      }
+    ],
+    "featured": true
+  },
+  {
+    "id": "p14",
+    "title": "YouTube Video Script Hook & Outline",
+    "category": "marketing",
+    "template": "I am making a YouTube video about {{var_1}}. Write a compelling 30-second video opening hook\nthat stops user scroll, followed by a logical 5-point script outline. Style: High energy, relatable.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Topic",
+        "example": ""
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p15",
+    "title": "The SEO Blog Post Architect",
+    "category": "marketing",
+    "template": "Act as an SEO Expert. Create an optimized H2 and H3 blog post outline for the target keyword:\n'{{var_1}}'. Include a Meta Title and Meta Description that maximizes Click-Through-Rate\n(CTR).",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Your Keyword",
+        "example": ""
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p16",
+    "title": "Instagram Reel/TikTok Storyboard",
+    "category": "marketing",
+    "template": "Create a 15-second visual and audio storyboard for an Instagram Reel about {{var_1}}. Table\nlayout with columns: Visual Scene, On-Screen Text, Audio/Voiceover, and Estimated Duration.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Topic",
+        "example": ""
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p17",
+    "title": "The Email Newsletter Storyteller",
+    "category": "marketing",
+    "template": "Use the Hook-Story-Offer formula to write an engaging email newsletter for my subscribers.\nTopic: {{var_1}}. Softly transition into promoting our product/service:\n{{var_2}}.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Share a mistake or lesson learned",
+        "example": ""
+      },
+      {
+        "id": "var_2",
+        "label": "Product Link/Name",
+        "example": ""
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p18",
+    "title": "E-commerce Product Description Maker",
+    "category": "marketing",
+    "template": "Write an emotional, benefits-driven product description for {{var_1}}. Don't just list\nfeatures; explain how it transforms the user's daily life. Target audience: {{var_2}}.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Product Name",
+        "example": ""
+      },
+      {
+        "id": "var_2",
+        "label": "e.g., Working\nmothers",
+        "example": ""
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p19",
+    "title": "Brand Tagline/Slogan Brainstormer",
+    "category": "marketing",
+    "template": "Generate 15 unique, short, and memorable taglines for a brand that sells {{var_1}}.\nCategories requested: 5 Modern/Techy, 5 Emotional, 5 Direct/Factual.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Product/Service",
+        "example": ""
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p20",
+    "title": "Repurposing Engine",
+    "category": "marketing",
+    "template": "Take this long-form article/video transcript: '{{var_1}}'. Repurpose it into 3 actionable Tweets\n(X posts), 1 short LinkedIn post, and a 50-word summary newsletter.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Paste text",
+        "example": ""
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p21",
+    "title": "Tree of Thoughts",
+    "category": "reasoning",
+    "template": "Act as 3 independent expert business strategists. Use Tree of Thoughts (ToT) architecture to\nsolve this complex problem: {{var_1}}. Brainstorm step-by-step, critique each other's ideas, and filter down to the single best\nexecution path.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Insert Problem",
+        "example": "Our SaaS churn rate increased by 15% this\nmonth"
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p22",
+    "title": "The 2026 'Bento-Box' XML Debugger",
+    "category": "reasoning",
+    "template": "I need to debug a critical issue. Use a strict Bento-Box layout.\n{{var_1}}: 1. Identify the logical error. 2. Provide the optimized fix.\n<context_setup> Language: {{var_2}} | Environment: Production </context_setup>\n<error_log> {{var_3}} </error_log>\n<code_snippet> {{var_4}} </code_snippet>",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "TASKS",
+        "example": ""
+      },
+      {
+        "id": "var_2",
+        "label": "e.g., Python/Node.js",
+        "example": ""
+      },
+      {
+        "id": "var_3",
+        "label": "Paste your error message here",
+        "example": ""
+      },
+      {
+        "id": "var_4",
+        "label": "Paste code here",
+        "example": ""
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p23",
+    "title": "Counterfactual History/Market Analysis",
+    "category": "reasoning",
+    "template": "Apply Counterfactual Reasoning to my industry: {{var_1}}. Question: 'If {{var_2}}, how will it affect\nconsumer behavior?' Analyze the immediate domino effect.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Your Industry/Market",
+        "example": ""
+      },
+      {
+        "id": "var_2",
+        "label": "A major\ntrend/change",
+        "example": "if third-party cookies are completely banned tomorrow"
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p24",
+    "title": "Anti-Prompt Clean Coding",
+    "category": "reasoning",
+    "template": "Write a {{var_1}} function to {{var_2}}.\nAnti-Prompts: No Fluff, No Explanation, No Preamble. Start directly with the markdown code\nblock and add inline code comments only.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Language",
+        "example": ""
+      },
+      {
+        "id": "var_2",
+        "label": "Task",
+        "example": "validate Indian phone numbers using Regex"
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p25",
+    "title": "The Chain-of-Density Book Summarizer",
+    "category": "reasoning",
+    "template": "Summarize the core thesis of the book '{{var_1}}' in 300 words. Then, run a Chain of Density\nloop: condense it by 30% into 200 words while making it more information-dense. Finally,\ncondense it to 100 words of pure gold insights.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Book Title",
+        "example": ""
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p26",
+    "title": "The Bayesian Logic Decision Maker",
+    "category": "reasoning",
+    "template": "I need to make a critical pivot decision. Old Probability: I believed {{var_1}} had a 70% success\nrate. New Data: {{var_2}}. Use Bayesian Reasoning to recalculate the\nsuccess probability and suggest whether I should Pivot or Persevere.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Idea A",
+        "example": ""
+      },
+      {
+        "id": "var_2",
+        "label": "Insert new market event or failure",
+        "example": ""
+      }
+    ],
+    "featured": true
+  },
+  {
+    "id": "p27",
+    "title": "The Grounded Compliance Checker",
+    "category": "reasoning",
+    "template": "Act as a strict compliance auditor. Read this company policy document: '{{var_1}}'.\nNow, answer this question: '{{var_2}}'. Grounding Rule: Rely ONLY on the clear facts\nmentioned in the document. If the answer is not present, state 'Information not available in\nsource data'. Do not hallucinate.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Paste Document",
+        "example": ""
+      },
+      {
+        "id": "var_2",
+        "label": "Your Question",
+        "example": ""
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p28",
+    "title": "Multi-Persona Panel Discussion",
+    "category": "reasoning",
+    "template": "Act as a panel of 3 distinct experts: (1) A data-driven Growth Hacker, (2) A customer-obsessed\nUX Researcher, and (3) A conservative Chief Financial Officer. Debate this idea: '{{var_1}}'. Show their discussion and final\nconsensus.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Your Idea -\ne.g., Automating our customer support with an AI agent",
+        "example": ""
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p29",
+    "title": "The Prompt Injection Vulnerability Scanner",
+    "category": "reasoning",
+    "template": "Act as an ethical security researcher. Review this user-input prompt template: '{{var_1}}'. Identify potential loopholes where a malicious user could perform a\n'prompt injection' or 'jailbreak' to bypass constraints. Suggest secure patches.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Paste your\nsystem prompt template",
+        "example": ""
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p30",
+    "title": "Self-Refinement Quality Loop",
+    "category": "reasoning",
+    "template": "Write a marketing copy for {{var_1}}. Once done, automatically act as your own harshest critic.\nReview the copy for cliches, robotic AI words, and weak verbs. Rewrite the final version based\non your own critique.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Product",
+        "example": ""
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p31",
+    "title": "WhatsApp Business Automated Sequence",
+    "category": "indian",
+    "template": "Write a 3-part WhatsApp automated message sequence for an Indian e-commerce customer\nwho left items in their cart. Language: Friendly Hinglish. Tone: Helpful, culturally relatable\n(include a sense of urgency without being pushy). Use emojis smartly.",
+    "variables": [],
+    "featured": true
+  },
+  {
+    "id": "p32",
+    "title": "Indian Consumer Psychology Copywriter",
+    "category": "indian",
+    "template": "Rewrite this formal English product offer into a compelling, emotionally charged pitch targeted\nat Indian middle-class families. Tap into core Indian consumer triggers like 'Value for Money',\n'Family Security', or 'Bachat'. Language: Natural Hinglish.",
+    "variables": [],
+    "featured": false
+  },
+  {
+    "id": "p33",
+    "title": "Festive Season Marketing Campaign",
+    "category": "indian",
+    "template": "Act as a Creative Director. Brainstorm 5 unique campaign ideas for {{var_1}} for\nthe upcoming {{var_2}} shopping season. Include offer ideas, creative hooks, and\na catchy slogan.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Your Business Type",
+        "example": ""
+      },
+      {
+        "id": "var_2",
+        "label": "Festival",
+        "example": "Diwali"
+      }
+    ],
+    "featured": true
+  },
+  {
+    "id": "p34",
+    "title": "Local Kirana/Retail Store Digital Expansion",
+    "category": "indian",
+    "template": "I run a physical {{var_1}} in {{var_2}}. Give me a\nstep-by-step low-budget blueprint to take my business digital using Google My Business,\nWhatsApp Networks, and local Instagram targeting.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Store Type",
+        "example": "clothing boutique/bakery"
+      },
+      {
+        "id": "var_2",
+        "label": "City Name",
+        "example": ""
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p35",
+    "title": "The Hinglish Explainer",
+    "category": "indian",
+    "template": "Explain the complex concept of {{var_1}}\nusing the Feynman Technique. Explain it as if you are talking to a 15-year-old Indian student.\nUse daily-life Indian analogies (like cricket, tea stalls, or train journeys). Language: Hinglish.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Topic",
+        "example": "Stock Market Options Trading / Cryptocurrency"
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p36",
+    "title": "Local Influencer Pitch Script",
+    "category": "indian",
+    "template": "Write a DM (Direct Message) pitch script to collaborate with local micro-influencers in India for\nmy brand {{var_1}}. Offer: {{var_2}}. Keep it casual,\nrespectful, and appealing to creators.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Brand Niche",
+        "example": ""
+      },
+      {
+        "id": "var_2",
+        "label": "e.g., Free product kit + affiliate commission",
+        "example": ""
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p37",
+    "title": "The Multilingual Glossary Maker",
+    "category": "indian",
+    "template": "Take this technical text: '{{var_1}}'. Create a 3-column glossary table: Column 1 = Original\nEnglish Term, Column 2 = Pure Hindi Translation (Devanagari), Column 3 = Simplified\nHinglish/Daily life explanation.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Paste text",
+        "example": ""
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p38",
+    "title": "Customer Support Template",
+    "category": "indian",
+    "template": "Write a customer support email template resolving a delayed delivery issue for an Indian online\nbuyer. Tone: Highly respectful, apologetic, and clear on the resolution timeline. Address\ncommon anxieties about prepaid payments.",
+    "variables": [],
+    "featured": false
+  },
+  {
+    "id": "p39",
+    "title": "Freelance Quote & Invoice Cover Letter",
+    "category": "indian",
+    "template": "Write a professional email pitch responding to an Indian client looking for a freelance {{var_1}}. Balance professional global standards with local price-negotiation\nboundaries. Tone: Confident, flexible yet firm on value.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Your Skill\n- e.g., Website Developer",
+        "example": ""
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p40",
+    "title": "Micro-Startup Bootstrapping Idea Generator",
+    "category": "indian",
+    "template": "Generate 5 highly practical, low-investment (under 50k INR) business ideas tailored for the\ncurrent Indian market in {{var_1}}. Focus on high-demand niches like sustainability, local gig\nservices, or AI-assisted micro-agencies.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Year 2026",
+        "example": ""
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p41",
+    "title": "The Ultimate Book Synthesizer",
+    "category": "productivity",
+    "template": "Act as an expert executive coach. Read the core principles of the book '{{var_1}}'. Convert\nthem into a 5-step action plan that I can easily integrate into my daily routine starting tomorrow.\nFormat: Bullet points.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Book Name",
+        "example": ""
+      }
+    ],
+    "featured": true
+  },
+  {
+    "id": "p42",
+    "title": "80/20 Skill Learning Roadmap",
+    "category": "productivity",
+    "template": "I want to learn {{var_1}} from scratch. Use the 80/20 rule\nto create a 21-day learning roadmap focusing ONLY on the 20% core sub-skills that deliver 80%\nof practical proficiency.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Skill",
+        "example": "Video Editing using Premiere Pro"
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p43",
+    "title": "Socratic Mentor for Problem Solving",
+    "category": "productivity",
+    "template": "Act as my intellectual mentor. Do not give me direct answers. Instead, use the Socratic\nMethod—ask me 3 deep, sequential questions about my current life dilemma: '{{var_1}}',\nto help me discover the solution myself.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Insert Dilemma",
+        "example": ""
+      }
+    ],
+    "featured": true
+  },
+  {
+    "id": "p44",
+    "title": "The Mental Model Framework Analyzer",
+    "category": "productivity",
+    "template": "Analyze this personal career choice: '{{var_1}}'. Evaluate it using 3 classic mental models: First-Principles Thinking,\nSecond-Order Thinking, and Regret Minimization Framework.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Describe choice",
+        "example": "Leaving my stable corporate job\nfor full-time freelancing"
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p45",
+    "title": "Email Inbox Zero Assistant",
+    "category": "productivity",
+    "template": "Act as my personal executive assistant. Read this long, chaotic email thread: '{{var_1}}'. Summarize it for me in 3 bullet points: (1) What happened, (2) Action items\nspecifically for me, and (3) Reply deadline. Anti-Prompt: Keep it ultra-short.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Paste\nThread/Text",
+        "example": ""
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p46",
+    "title": "Personalized Daily Schedule Optimizer",
+    "category": "productivity",
+    "template": "Here is my current chaotic daily routine: {{var_1}}. I want to make time for {{var_2}}. Optimize my schedule\nfor peak energy levels and maximum focus blocks.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "List your current wakeup time, office hours, and sleep\ntime",
+        "example": ""
+      },
+      {
+        "id": "var_2",
+        "label": "Goal",
+        "example": "reading books / working out"
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p47",
+    "title": "Complex Data Simplifier",
+    "category": "productivity",
+    "template": "Take this complex financial/analytics data sheet text: '{{var_1}}'. Turn these\nboring numbers into a compelling narrative story that can be easily understood by a\nnon-technical board member.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Paste raw data/numbers",
+        "example": ""
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p48",
+    "title": "Creative Writer's Block Breaker",
+    "category": "productivity",
+    "template": "I am writing a story/article about {{var_1}}. Generate 5 unexpected plot twists or unique\nangles that defy standard cliches, along with a powerful metaphors I can use.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Core Idea",
+        "example": ""
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p49",
+    "title": "Mock Interviewer",
+    "category": "productivity",
+    "template": "Act as an elite interviewer for the position of {{var_1}}. Ask me 1 challenging behavioral\ninterview question at a time. Wait for my answer. After I reply, evaluate my response based on\nthe STAR framework, give constructive feedback, and then ask the next question.",
+    "variables": [
+      {
+        "id": "var_1",
+        "label": "Job Role",
+        "example": ""
+      }
+    ],
+    "featured": false
+  },
+  {
+    "id": "p50",
+    "title": "The Weekly Self-Reflection Coach",
+    "category": "productivity",
+    "template": "Act as a high-performance psychologist. Conduct my weekly review. Ask me 4 deep questions\nregarding my productivity, emotional state, major wins, and friction",
+    "variables": [],
+    "featured": false
+  }
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
