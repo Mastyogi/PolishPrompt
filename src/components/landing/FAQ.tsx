@@ -19,10 +19,6 @@ export const FAQ_ITEMS = [
     a: "No. Every prompt works with the free version of ChatGPT, Gemini, Claude and most major AI models.",
   },
   {
-    q: "Is the 60% off really limited time?",
-    a: "Yes — the launch discount ends without notice. Lifetime updates are included once you unlock.",
-  },
-  {
     q: "Can I share my AI test scorecard?",
     a: "Yes. After finishing the test you can download a PDF scorecard or share your result link on WhatsApp, LinkedIn or X.",
   },

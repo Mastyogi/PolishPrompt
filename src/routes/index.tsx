@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PlatformExperience } from "@/components/landing/PlatformExperience";
 import { FAQ_ITEMS } from "@/lib/content";
+import { useScrollDepth } from "@/hooks/useScrollDepth";
 
 const SITE = "https://polishprompt.tech";
 
@@ -13,7 +14,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Take the free adaptive AI diagnosis test, see your prompt-skill score, and master ChatGPT with the PolishPrompt AI prompt guide — 150+ tested prompts, frameworks and Indian-context templates. 60% Off, limited time.",
+          "Take the free adaptive AI diagnosis test, see your prompt-skill score, and master ChatGPT with the PolishPrompt AI prompt guide — 150+ tested prompts, frameworks and Indian-context templates.",
       },
       {
         name: "keywords",
@@ -40,12 +41,6 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "canonical", href: `${SITE}/` },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap",
-      },
     ],
     scripts: [
       {
@@ -82,15 +77,6 @@ export const Route = createFileRoute("/")({
                 url: "https://amzn.in/d/00vHMnM3",
                 availability: "https://schema.org/InStock",
                 priceCurrency: "INR",
-                priceSpecification: {
-                  "@type": "PriceSpecification",
-                  description: "60% Off — limited time launch pricing",
-                },
-              },
-              aggregateRating: {
-                "@type": "AggregateRating",
-                ratingValue: "4.8",
-                reviewCount: "1240",
               },
             },
             {
@@ -119,5 +105,6 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  useScrollDepth();
   return <PlatformExperience />;
 }

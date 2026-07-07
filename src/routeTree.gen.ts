@@ -30,7 +30,7 @@ const SubscribeRoute = SubscribeRouteImport.update({
   id: '/subscribe',
   path: '/subscribe',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any).lazy(() => import('./routes/subscribe.lazy').then((d) => d.Route))
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -45,22 +45,22 @@ const LibraryRoute = LibraryRouteImport.update({
   id: '/library',
   path: '/library',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any).lazy(() => import('./routes/library.lazy').then((d) => d.Route))
 const GuidesRoute = GuidesRouteImport.update({
   id: '/guides',
   path: '/guides',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any).lazy(() => import('./routes/guides.lazy').then((d) => d.Route))
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any).lazy(() => import('./routes/contact.lazy').then((d) => d.Route))
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any).lazy(() => import('./routes/about.lazy').then((d) => d.Route))
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -70,12 +70,12 @@ const LibrarySlugRoute = LibrarySlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => LibraryRoute,
-} as any)
+} as any).lazy(() => import('./routes/library.$slug.lazy').then((d) => d.Route))
 const GuidesSlugRoute = GuidesSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => GuidesRoute,
-} as any)
+} as any).lazy(() => import('./routes/guides.$slug.lazy').then((d) => d.Route))
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute

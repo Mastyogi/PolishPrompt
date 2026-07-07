@@ -175,7 +175,7 @@ bun run build
 ```
 
 ### Preview Production Build
-
+npm 
 ```bash
 bun run preview
 ```

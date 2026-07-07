@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { QUESTIONS, type Question, type Difficulty, type Category } from "./questions";
+import { AMAZON_URL } from "@/lib/content";
 import {
   Brain,
   Clock,
@@ -13,7 +14,6 @@ import {
   X,
   Timer,
 } from "lucide-react";
-import jsPDF from "jspdf";
 
 const ROUND_SIZE = 10;
 const TIMER_OPTIONS = [10, 20, 30] as const;
@@ -265,7 +265,8 @@ export function Quiz() {
     (c) => breakdown[c].total > 0 && breakdown[c].correct / breakdown[c].total < 0.5,
   );
 
-  function downloadPDF() {
+  async function downloadPDF() {
+    const { default: jsPDF } = await import("jspdf");
     const doc = new jsPDF({ unit: "pt", format: "a4" });
     const w = doc.internal.pageSize.getWidth();
     // header
@@ -439,7 +440,10 @@ export function Quiz() {
                 <span className="rounded-full bg-gradient-cyan px-3 py-1 capitalize text-white">
                   {current.category} · {current.difficulty}
                 </span>
-                <span className="inline-flex items-center gap-1 rounded-full bg-card/70 px-3 py-1 text-foreground">
+                <span
+                  className="inline-flex items-center gap-1 rounded-full bg-card/70 px-3 py-1 text-foreground"
+                  aria-label={`${secondsLeft} seconds remaining`}
+                >
                   <Timer className="h-3.5 w-3.5" /> {secondsLeft}s
                 </span>
               </div>
@@ -564,7 +568,7 @@ export function Quiz() {
                 </div>
 
                 <div className="flex flex-wrap gap-3">
-                  <a href="#cta" className="btn-primary">
+                  <a href={AMAZON_URL} className="btn-primary">
                     Unlock the Ebook
                   </a>
                   <button onClick={downloadPDF} className="btn-ghost">
