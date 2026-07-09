@@ -31,6 +31,9 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "product" },
       { property: "og:url", content: `${SITE}/` },
       { property: "og:site_name", content: "PolishPrompt" },
+      { property: "og:image", content: `${SITE}/og-image.svg` },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "PolishPrompt — AI Prompt Guide & Free AI Diagnosis Test" },
       {
@@ -38,6 +41,7 @@ export const Route = createFileRoute("/")({
         content:
           "Free adaptive AI diagnosis test + 150+ tested ChatGPT prompts. Master AI in 21 days.",
       },
+      { name: "twitter:image", content: `${SITE}/og-image.svg` },
     ],
     links: [
       { rel: "canonical", href: `${SITE}/` },

@@ -12,6 +12,8 @@ export const Route = createFileRoute("/privacy")({
       { property: "og:title", content: "Privacy Policy — PolishPrompt" },
       { property: "og:description", content: "Plain-English privacy policy for PolishPrompt." },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://polishprompt.tech/privacy" },
+      { property: "og:image", content: "https://polishprompt.tech/og-image.svg" },
     ],
     links: [{ rel: "canonical", href: "https://polishprompt.tech/privacy" }],
   }),

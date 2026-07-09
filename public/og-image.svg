@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="50%" stop-color="#312e81"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" rx="0"/>
+  <rect x="60" y="540" width="400" height="6" rx="3" fill="url(#accent)"/>
+  <text x="80" y="260" font-family="'Inter', system-ui, sans-serif" font-size="64" font-weight="700" fill="#ffffff">PolishPrompt</text>
+  <text x="80" y="340" font-family="'Inter', system-ui, sans-serif" font-size="36" font-weight="500" fill="#a5b4fc">Better Results from AI Prompts</text>
+  <rect x="80" y="380" width="500" height="2" rx="1" fill="rgba(255,255,255,0.1)"/>
+  <text x="80" y="430" font-family="'Inter', system-ui, sans-serif" font-size="24" font-weight="400" fill="#94a3b8">Free AI Diagnosis Test · 150+ Prompts · Guides &amp; Ebook</text>
+</svg>

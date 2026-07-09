@@ -28,7 +28,26 @@ export const Route = createFileRoute("/library/$slug")({
           content: description,
         },
         { property: "og:type", content: "article" },
+        { property: "og:url", content: `${SITE_URL}/library/${params.slug}` },
+        { property: "og:image", content: `${SITE_URL}/og-image.svg` },
         { rel: "canonical", href: `${SITE_URL}/library/${params.slug}` },
+      ],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            headline: prompt?.title ?? "",
+            description: description,
+            author: { "@type": "Person", name: "Rahul Rana" },
+            publisher: { "@type": "Organization", name: "PolishPrompt", url: SITE_URL },
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `${SITE_URL}/library/${params.slug}`,
+            },
+          }),
+        },
       ],
     };
   },

@@ -16,6 +16,8 @@ export const Route = createFileRoute("/terms")({
         content: "Terms for using PolishPrompt content and resources.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE_URL}/terms` },
+      { property: "og:image", content: `${SITE_URL}/og-image.svg` },
       { rel: "canonical", href: `${SITE_URL}/terms` },
     ],
   }),
