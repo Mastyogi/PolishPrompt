@@ -18,6 +18,8 @@ function SubscribePage() {
         >
           <input
             type="email"
+            id="subscribe-email"
+            name="email"
             placeholder="you@example.com"
             className="h-12 flex-1 rounded-full border border-border bg-background px-4"
             aria-label="Email address"
