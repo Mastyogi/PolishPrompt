@@ -25,17 +25,29 @@ const SITE_URL = urlMatch[1];
 // PROMPTS — extract id values from objects in the PROMPTS array
 const promptIds = [];
 const promptBlock = src.match(/export\s+const\s+PROMPTS[\s\S]*?\];/);
-if (promptBlock) {
-  const idMatches = promptBlock[0].matchAll(/"id"\s*:\s*"(p\d+)"/g);
-  for (const m of idMatches) promptIds.push(m[1]);
+if (!promptBlock) {
+  console.error("❌ Could not locate the PROMPTS array in content.ts");
+  process.exit(1);
+}
+const idMatches = promptBlock[0].matchAll(/"id"\s*:\s*"(p\d+)"/g);
+for (const m of idMatches) promptIds.push(m[1]);
+if (promptIds.length === 0) {
+  console.error("❌ No prompt ids found in the PROMPTS array — sitemap would be incomplete");
+  process.exit(1);
 }
 
 // GUIDE_POSTS — extract slug values
 const guideSlugs = [];
 const guideBlock = src.match(/export\s+const\s+GUIDE_POSTS[\s\S]*?\];/);
-if (guideBlock) {
-  const slugMatches = guideBlock[0].matchAll(/slug:\s*"([^"]+)"/g);
-  for (const m of slugMatches) guideSlugs.push(m[1]);
+if (!guideBlock) {
+  console.error("❌ Could not locate the GUIDE_POSTS array in content.ts");
+  process.exit(1);
+}
+const slugMatches = guideBlock[0].matchAll(/slug:\s*"([^"]+)"/g);
+for (const m of slugMatches) guideSlugs.push(m[1]);
+if (guideSlugs.length === 0) {
+  console.error("❌ No guide slugs found in the GUIDE_POSTS array — sitemap would be incomplete");
+  process.exit(1);
 }
 
 console.log(`Found ${promptIds.length} prompts and ${guideSlugs.length} guides for sitemap`);
