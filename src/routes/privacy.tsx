@@ -84,8 +84,8 @@ function PrivacyPage() {
         <section>
           <h2 className="text-xl font-semibold">5. Your rights</h2>
           <p className="mt-2 text-sm">
-            Clear your browser storage at any time to wipe your test progress and theme. Email us
-            to request deletion of any message you've sent us.
+            Clear your browser storage at any time to wipe your test progress and theme. Email us to
+            request deletion of any message you've sent us.
           </p>
         </section>
 

@@ -84,19 +84,19 @@ export function Nav() {
 
   const mobileLinkClass = (path: string) =>
     `rounded-xl px-3 py-2 text-sm font-medium transition-colors ${
-      isActive(path)
-        ? "bg-accent text-foreground"
-        : "hover:bg-accent"
+      isActive(path) ? "bg-accent text-foreground" : "hover:bg-accent"
     }`;
 
   return (
     <header className="sticky top-0 z-40 w-full">
       <div className="mx-auto mt-3 max-w-6xl px-4">
-        <nav className={`flex items-center justify-between gap-2 rounded-full px-3 py-2 sm:px-5 transition-all duration-300 ${
-          scrolled
-            ? "bg-card/85 backdrop-blur-xl shadow-card border border-border/70"
-            : "glass-strong"
-        }`}>
+        <nav
+          className={`flex items-center justify-between gap-2 rounded-full px-3 py-2 sm:px-5 transition-all duration-300 ${
+            scrolled
+              ? "bg-card/85 backdrop-blur-xl shadow-card border border-border/70"
+              : "glass-strong"
+          }`}
+        >
           <Link to="/" className="flex items-center gap-2 font-semibold">
             <span className="grid h-8 w-8 place-items-center rounded-full bg-gradient-primary text-white shadow-glow">
               <Sparkles className="h-4 w-4" />
@@ -143,39 +143,19 @@ export function Nav() {
             className="mt-2 rounded-2xl border border-border/70 bg-card p-4 shadow-card lg:hidden"
           >
             <div className="flex flex-col gap-2">
-              <Link
-                to="/"
-                onClick={closeMenu}
-                className={mobileLinkClass("/")}
-              >
+              <Link to="/" onClick={closeMenu} className={mobileLinkClass("/")}>
                 Home
               </Link>
-              <Link
-                to="/library"
-                onClick={closeMenu}
-                className={mobileLinkClass("/library")}
-              >
+              <Link to="/library" onClick={closeMenu} className={mobileLinkClass("/library")}>
                 Library
               </Link>
-              <Link
-                to="/guides"
-                onClick={closeMenu}
-                className={mobileLinkClass("/guides")}
-              >
+              <Link to="/guides" onClick={closeMenu} className={mobileLinkClass("/guides")}>
                 Guides
               </Link>
-              <Link
-                to="/about"
-                onClick={closeMenu}
-                className={mobileLinkClass("/about")}
-              >
+              <Link to="/about" onClick={closeMenu} className={mobileLinkClass("/about")}>
                 About
               </Link>
-              <Link
-                to="/contact"
-                onClick={closeMenu}
-                className={mobileLinkClass("/contact")}
-              >
+              <Link to="/contact" onClick={closeMenu} className={mobileLinkClass("/contact")}>
                 Contact
               </Link>
               <div className="mt-2 border-t border-border/50 pt-2">

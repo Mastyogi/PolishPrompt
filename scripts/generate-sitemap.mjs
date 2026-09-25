@@ -29,7 +29,8 @@ if (!promptBlock) {
   console.error("❌ Could not locate the PROMPTS array in content.ts");
   process.exit(1);
 }
-const idMatches = promptBlock[0].matchAll(/"id"\s*:\s*"(p\d+)"/g);
+// Match both quoted and unquoted key: "id": "p1" or id: "p1"
+const idMatches = promptBlock[0].matchAll(/"?id"?\s*:\s*"(p\d+)"/g);
 for (const m of idMatches) promptIds.push(m[1]);
 if (promptIds.length === 0) {
   console.error("❌ No prompt ids found in the PROMPTS array — sitemap would be incomplete");
@@ -43,7 +44,7 @@ if (!guideBlock) {
   console.error("❌ Could not locate the GUIDE_POSTS array in content.ts");
   process.exit(1);
 }
-const slugMatches = guideBlock[0].matchAll(/slug:\s*"([^"]+)"/g);
+const slugMatches = guideBlock[0].matchAll(/slug\s*:\s*"([^"]+)"/g);
 for (const m of slugMatches) guideSlugs.push(m[1]);
 if (guideSlugs.length === 0) {
   console.error("❌ No guide slugs found in the GUIDE_POSTS array — sitemap would be incomplete");

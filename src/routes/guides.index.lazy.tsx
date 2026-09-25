@@ -1,11 +1,11 @@
 import { createLazyFileRoute, Link } from "@tanstack/react-router";
 import { GUIDE_POSTS } from "@/lib/content";
 
-export const Route = createLazyFileRoute("/guides")({
-  component: GuidesPage,
+export const Route = createLazyFileRoute("/guides/")({
+  component: GuidesIndex,
 });
 
-function GuidesPage() {
+function GuidesIndex() {
   return (
     <section className="px-4 py-16 sm:py-20">
       <div className="mx-auto max-w-6xl">

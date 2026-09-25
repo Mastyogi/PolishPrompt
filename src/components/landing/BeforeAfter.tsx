@@ -11,8 +11,7 @@ const EXAMPLES = [
     bad: "Write marketing ideas",
     badResult:
       "1. Create engaging posts\n2. Use relevant hashtags\n3. Post consistently\n4. Engage with your audience\n\nGeneric advice you could get from any blog.",
-    good:
-      'You are a social media strategist. Write 5 Instagram hooks for a "{business_type}" brand targeting "{audience}" in a "{tone}" tone.\n\nRequirements:\n- Each hook ≤ 12 words with a curiosity gap\n- Hinglish style\n- Scroll-stopping opener\n\nFormat:\n| Hook | Why it works |',
+    good: 'You are a social media strategist. Write 5 Instagram hooks for a "{business_type}" brand targeting "{audience}" in a "{tone}" tone.\n\nRequirements:\n- Each hook ≤ 12 words with a curiosity gap\n- Hinglish style\n- Scroll-stopping opener\n\nFormat:\n| Hook | Why it works |',
     goodResult:
       "| Hook | Why it works |\n|-------|-------------|\n| 'Skin glow bina filter ke?' | Relatable Gen-Z pain point |\n| 'Mummy ne poocha — yeh glow kya hai?' | Cultural hook, instant relatability |\n\nPunchy, conversion-ready — usable in 30 seconds.",
   },
@@ -22,8 +21,7 @@ const EXAMPLES = [
     bad: "Analyze my competitors",
     badResult:
       "Your competitors are doing well. You should study their social media and improve your product.\n\nSurface-level. No structure, no framework.",
-    good:
-      "Act as a Market Research Analyst. Conduct a detailed SWOT analysis comparing my business: \"{business_type}\" with main competitor \"{competitor}\".\n\nStructure:\n| Factor | My Business | Competitor |\n|--------|-------------|------------|\n| Strengths | | |\n| Weaknesses | | |\n\nOutput as a comparison table with actionable insights.",
+    good: 'Act as a Market Research Analyst. Conduct a detailed SWOT analysis comparing my business: "{business_type}" with main competitor "{competitor}".\n\nStructure:\n| Factor | My Business | Competitor |\n|--------|-------------|------------|\n| Strengths | | |\n| Weaknesses | | |\n\nOutput as a comparison table with actionable insights.',
     goodResult:
       "| Factor | My Business (Local Gym) | Competitor (Cult.fit) |\n|--------|------------------------|----------------------|\n| Strengths | Personal touch, lower cost | Brand trust, app ecosystem |\n| Weakness | No app, limited classes | Higher price |\n| Opportunity | Partner with local cafes | — |\n\nStructured. Comparable. Actionable — directly usable.",
   },
@@ -33,8 +31,7 @@ const EXAMPLES = [
     bad: "Help me learn faster",
     badResult:
       "Set a schedule, practice daily, take breaks, use Pomodoro.\n\nAdvice so generic it works for any skill — and helps with none.",
-    good:
-      'I want to learn "{skill}" from scratch in 21 days.\n\nUse the 80/20 rule to create a roadmap focusing ONLY on the 20% core sub-skills that deliver 80% of practical proficiency.\n\nFormat:\nWeek 1: [Core foundation]\nWeek 2: [Practice with real examples]\nWeek 3: [Polish and output]\n\nConstraints:\n- No fluff\n- Only actionable steps with time estimates',
+    good: 'I want to learn "{skill}" from scratch in 21 days.\n\nUse the 80/20 rule to create a roadmap focusing ONLY on the 20% core sub-skills that deliver 80% of practical proficiency.\n\nFormat:\nWeek 1: [Core foundation]\nWeek 2: [Practice with real examples]\nWeek 3: [Polish and output]\n\nConstraints:\n- No fluff\n- Only actionable steps with time estimates',
     goodResult:
       "Week 1: Timeline basics + cutting (3 hrs/day)\nWeek 2: Effects + transitions with real footage\nWeek 3: Export settings + portfolio piece\n\nFocused roadmap. Only high-impact skills. No wasted time.",
   },
@@ -76,7 +73,11 @@ export function BeforeAfter() {
         </div>
 
         {/* Category Tabs */}
-        <div className="mt-8 flex flex-wrap gap-2" role="tablist" aria-label="Choose a before/after example">
+        <div
+          className="mt-8 flex flex-wrap gap-2"
+          role="tablist"
+          aria-label="Choose a before/after example"
+        >
           {EXAMPLES.map((ex, index) => (
             <button
               key={ex.label}
@@ -147,10 +148,14 @@ export function BeforeAfter() {
                 </div>
               </div>
               <div className="mt-5 flex gap-2">
-                <Button size="sm" variant="outline" onClick={() => {
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() => {
                     copyGoodPrompt();
                     trackEvent("before_after_copy", "Engagement", example.label);
-                  }}>
+                  }}
+                >
                   {copiedGood ? (
                     <>
                       <Check className="h-4 w-4 text-emerald-500" /> Copied

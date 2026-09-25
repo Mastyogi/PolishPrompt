@@ -9,7 +9,9 @@ export const Route = createFileRoute("/about")({
         name: "description",
         content: "Learn the story, mission and editorial approach behind PolishPrompt.",
       },
-      { property: "og:title", content: "About PolishPrompt" },      { property: "og:description",
+      { property: "og:title", content: "About PolishPrompt" },
+      {
+        property: "og:description",
         content: "A trust-first platform for prompt learning and better AI use.",
       },
       { property: "og:type", content: "website" },

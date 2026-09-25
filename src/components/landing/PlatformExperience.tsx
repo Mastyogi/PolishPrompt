@@ -17,14 +17,7 @@ import {
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import {
-  CATEGORIES,
-  FAQ_ITEMS,
-  PROMPTS,
-  TESTIMONIALS,
-  AMAZON_URL,
-  SITE_URL,
-} from "@/lib/content";
+import { CATEGORIES, FAQ_ITEMS, PROMPTS, TESTIMONIALS, AMAZON_URL, SITE_URL } from "@/lib/content";
 import { BeforeAfter } from "./BeforeAfter";
 import { trackCtaClick, trackCtaHover, trackEvent } from "@/lib/analytics";
 import { supabase } from "@/lib/supabase";
@@ -64,21 +57,24 @@ export function PlatformExperience() {
     }
   }
 
-function renderTemplatePreview(template: string, variables: Pick<PromptVariable, "id" | "label">[]) {
-  const parts = template.split(/(\{\{var_\d+\}\})/);
-  return parts.map((part, index) => {
-    const match = part.match(/\{\{(var_\d+)\}\}/);
-    if (match) {
-      const variable = variables.find((v) => v.id === match[1]);
-      return (
-        <span key={index} className="italic text-muted-foreground">
-          [{variable?.label || match[1]}]
-        </span>
-      );
-    }
-    return part;
-  });
-}
+  function renderTemplatePreview(
+    template: string,
+    variables: Pick<PromptVariable, "id" | "label">[],
+  ) {
+    const parts = template.split(/(\{\{var_\d+\}\})/);
+    return parts.map((part, index) => {
+      const match = part.match(/\{\{(var_\d+)\}\}/);
+      if (match) {
+        const variable = variables.find((v) => v.id === match[1]);
+        return (
+          <span key={index} className="italic text-muted-foreground">
+            [{variable?.label || match[1]}]
+          </span>
+        );
+      }
+      return part;
+    });
+  }
 
   function toggleSave(slug: string) {
     setSavedSlugs((current) =>
@@ -90,10 +86,7 @@ function renderTemplatePreview(template: string, variables: Pick<PromptVariable,
     <div className="pb-16">
       <section id="top" className="px-4 pb-20 pt-10 sm:pt-16">
         <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}>
             <div className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-background/70 px-3 py-1.5 text-sm text-muted-foreground shadow-soft">
               <Sparkles className="h-4 w-4 text-violet-500" />
               Better results from AI prompts, without the fluff
@@ -107,10 +100,18 @@ function renderTemplatePreview(template: string, variables: Pick<PromptVariable,
               professionals who want useful AI results with less guesswork.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <Link to="/library" className="btn-primary" onClick={() => trackCtaClick("Hero - Explore Library")}>
+              <Link
+                to="/library"
+                className="btn-primary"
+                onClick={() => trackCtaClick("Hero - Explore Library")}
+              >
                 Explore Prompt Library <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link to="/guides" className="btn-ghost" onClick={() => trackCtaClick("Hero - Free Learning Path")}>
+              <Link
+                to="/guides"
+                className="btn-ghost"
+                onClick={() => trackCtaClick("Hero - Free Learning Path")}
+              >
                 Take the free learning path
               </Link>
             </div>
@@ -159,7 +160,11 @@ function renderTemplatePreview(template: string, variables: Pick<PromptVariable,
                 Ready-to-use prompts that show you what structure looks like.
               </h2>
             </div>
-            <Link to="/library" className="text-sm font-semibold text-violet-600" onClick={() => trackCtaClick("Featured - See all prompts")}>
+            <Link
+              to="/library"
+              className="text-sm font-semibold text-violet-600"
+              onClick={() => trackCtaClick("Featured - See all prompts")}
+            >
               See all prompts →
             </Link>
           </div>
@@ -210,10 +215,14 @@ function renderTemplatePreview(template: string, variables: Pick<PromptVariable,
                     >
                       <Copy className="h-4 w-4" /> {copiedSlug === prompt.id ? "Copied" : "Copy"}
                     </Button>
-                    <Button size="sm" variant="outline" onClick={() => {
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => {
                         toggleSave(prompt.id);
                         trackEvent(isSaved ? "unsave_prompt" : "save_prompt", "Prompt", prompt.id);
-                      }}>
+                      }}
+                    >
                       <Heart className={`h-4 w-4 ${isSaved ? "fill-current text-rose-500" : ""}`} />{" "}
                       {isSaved ? "Saved" : "Save"}
                     </Button>
@@ -309,7 +318,11 @@ function renderTemplatePreview(template: string, variables: Pick<PromptVariable,
                 Browse by the tasks you want to improve.
               </h2>
             </div>
-            <Link to="/library" className="text-sm font-semibold text-violet-600" onClick={() => trackCtaClick("Categories - Open full library")}>
+            <Link
+              to="/library"
+              className="text-sm font-semibold text-violet-600"
+              onClick={() => trackCtaClick("Categories - Open full library")}
+            >
               Open full library →
             </Link>
           </div>
@@ -376,7 +389,11 @@ function renderTemplatePreview(template: string, variables: Pick<PromptVariable,
                 Fresh picks for people who want to return often.
               </h2>
             </div>
-            <Link to="/library" className="text-sm font-semibold text-violet-600" onClick={() => trackCtaClick("Trending - See all prompts")}>
+            <Link
+              to="/library"
+              className="text-sm font-semibold text-violet-600"
+              onClick={() => trackCtaClick("Trending - See all prompts")}
+            >
               See all prompts →
             </Link>
           </div>
@@ -403,7 +420,9 @@ function renderTemplatePreview(template: string, variables: Pick<PromptVariable,
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <div className="text-sm font-semibold capitalize text-violet-500">{prompt.category}</div>
+                      <div className="text-sm font-semibold capitalize text-violet-500">
+                        {prompt.category}
+                      </div>
                       <h3 className="mt-1 text-lg font-semibold">{prompt.title}</h3>
                     </div>
                     <span className="rounded-full bg-violet-500/10 px-2.5 py-1 text-xs font-semibold text-violet-600">
@@ -430,10 +449,14 @@ function renderTemplatePreview(template: string, variables: Pick<PromptVariable,
                     >
                       <Copy className="h-4 w-4" /> {copiedSlug === prompt.id ? "Copied" : "Copy"}
                     </Button>
-                    <Button size="sm" variant="outline" onClick={() => {
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => {
                         toggleSave(prompt.id);
                         trackEvent(isSaved ? "unsave_prompt" : "save_prompt", "Prompt", prompt.id);
-                      }}>
+                      }}
+                    >
                       <Heart className={`h-4 w-4 ${isSaved ? "fill-current text-rose-500" : ""}`} />{" "}
                       {isSaved ? "Saved" : "Save"}
                     </Button>
@@ -655,13 +678,12 @@ function renderTemplatePreview(template: string, variables: Pick<PromptVariable,
                 <span className="text-[oklch(0.92_0.12_90)]">Your prompt is.</span>
               </h2>
               <p className="mt-4 max-w-xl text-base leading-relaxed text-white/85">
-                90% of people blame the AI when they get generic answers back. The real gap
-                is <em>how</em> the prompt is written — and that is a skill you can actually
-                learn.
+                90% of people blame the AI when they get generic answers back. The real gap is{" "}
+                <em>how</em> the prompt is written — and that is a skill you can actually learn.
               </p>
               <ul className="mt-6 space-y-3 text-sm text-white/85">
                 {[
-                  "The exact formula behind a \"perfect\" prompt, broken down step-by-step",
+                  'The exact formula behind a "perfect" prompt, broken down step-by-step',
                   "100+ copy-paste prompts for business, marketing, and daily use",
                   "Advanced techniques most people never discover on their own",
                   "A prompt-debugging method that fixes weak answers instead of starting over",
@@ -710,9 +732,7 @@ function renderTemplatePreview(template: string, variables: Pick<PromptVariable,
                     </div>
                     <div>
                       <div className="text-sm font-semibold">Smart Prompts, Smart Results</div>
-                      <div className="text-xs text-muted-foreground">
-                        by JSS CORE LAB
-                      </div>
+                      <div className="text-xs text-muted-foreground">by JSS CORE LAB</div>
                     </div>
                   </div>
                   <ul className="mt-4 space-y-2.5 text-sm text-muted-foreground">
@@ -853,9 +873,7 @@ function renderTemplatePreview(template: string, variables: Pick<PromptVariable,
                     visible: { opacity: 1, y: 0 },
                   }}
                   className={`relative overflow-hidden rounded-[1.25rem] border shadow-soft transition-colors ${
-                    isOpen
-                      ? "border-violet-500/30 bg-card"
-                      : "border-border/70 bg-card/70"
+                    isOpen ? "border-violet-500/30 bg-card" : "border-border/70 bg-card/70"
                   }`}
                 >
                   {/* Left gradient accent bar when open */}
@@ -956,11 +974,7 @@ function renderTemplatePreview(template: string, variables: Pick<PromptVariable,
               onSubmit={async (event) => {
                 event.preventDefault();
                 const email = subscribeEmail.trim();
-                if (
-                  !email ||
-                  !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-                )
-                  return;
+                if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
                 setSubscribing(true);
                 setSubscribeStatus("idle");
                 try {
@@ -1003,11 +1017,7 @@ function renderTemplatePreview(template: string, variables: Pick<PromptVariable,
               >
                 {subscribing ? (
                   <span className="flex items-center gap-2">
-                    <svg
-                      className="h-4 w-4 animate-spin"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                    >
+                    <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none">
                       <circle
                         className="opacity-25"
                         cx="12"

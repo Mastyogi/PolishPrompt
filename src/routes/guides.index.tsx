@@ -1,8 +1,7 @@
-import { createFileRoute, Outlet } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { SITE_URL } from "@/lib/content";
 
-export const Route = createFileRoute("/guides")({
-  component: GuidesLayout,
+export const Route = createFileRoute("/guides/")({
   head: () => ({
     meta: [
       { title: "Guides & Blog — PolishPrompt" },
@@ -18,7 +17,7 @@ export const Route = createFileRoute("/guides")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE_URL}/guides` },
       { property: "og:image", content: `${SITE_URL}/og-image.svg` },
-      // NOTE: Canonical moved to index route to avoid duplication on detail pages
+      { rel: "canonical", href: `${SITE_URL}/guides` },
     ],
     scripts: [
       {
@@ -36,7 +35,3 @@ export const Route = createFileRoute("/guides")({
     ],
   }),
 });
-
-function GuidesLayout() {
-  return <Outlet />;
-}

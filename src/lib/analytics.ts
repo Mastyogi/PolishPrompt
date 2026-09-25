@@ -71,11 +71,7 @@ export function trackTimeOnPage(seconds: number, milestone?: string) {
 /**
  * Track a custom event with arbitrary parameters.
  */
-export function trackEvent(
-  action: string,
-  category: string,
-  label?: string,
-) {
+export function trackEvent(action: string, category: string, label?: string) {
   gtag("event", action, {
     event_category: category,
     event_label: label,

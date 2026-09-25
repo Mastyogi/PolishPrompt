@@ -50,8 +50,8 @@ function TermsPage() {
           <div>
             <h2 className="text-lg font-semibold text-foreground">Ebook and prompt usage</h2>
             <p className="mt-2">
-              The ebook and prompts are educational resources. They are not a guarantee of
-              specific outcomes.
+              The ebook and prompts are educational resources. They are not a guarantee of specific
+              outcomes.
             </p>
           </div>
           <div>

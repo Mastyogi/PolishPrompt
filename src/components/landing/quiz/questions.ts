@@ -1,10 +1,5 @@
 export type Category =
-  | "clarity"
-  | "context"
-  | "structure"
-  | "audience"
-  | "reasoning"
-  | "refinement";
+  "clarity" | "context" | "structure" | "audience" | "reasoning" | "refinement";
 export type Difficulty = "easy" | "medium" | "hard";
 
 export interface Question {

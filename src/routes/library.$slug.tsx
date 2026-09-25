@@ -13,7 +13,9 @@ function buildDescription(prompt: (typeof PROMPTS)[number]): string {
 export const Route = createFileRoute("/library/$slug")({
   head: ({ params }) => {
     const prompt = PROMPTS.find((item) => item.id === params.slug);
-    const description = prompt ? buildDescription(prompt) : "Explore a prompt from the PolishPrompt library.";
+    const description = prompt
+      ? buildDescription(prompt)
+      : "Explore a prompt from the PolishPrompt library.";
     const title = `${prompt?.title ?? "Prompt"} — Prompt Template | PolishPrompt`;
     return {
       meta: [

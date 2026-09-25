@@ -17,6 +17,8 @@ import { Route as GuidesRouteImport } from './routes/guides'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LibraryIndexRouteImport } from './routes/library.index'
+import { Route as GuidesIndexRouteImport } from './routes/guides.index'
 import { Route as LibrarySlugRouteImport } from './routes/library.$slug'
 import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
 
@@ -39,12 +41,12 @@ const LibraryRoute = LibraryRouteImport.update({
   id: '/library',
   path: '/library',
   getParentRoute: () => rootRouteImport,
-} as any).lazy(() => import('./routes/library.lazy').then((d) => d.Route))
+} as any)
 const GuidesRoute = GuidesRouteImport.update({
   id: '/guides',
   path: '/guides',
   getParentRoute: () => rootRouteImport,
-} as any).lazy(() => import('./routes/guides.lazy').then((d) => d.Route))
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -60,6 +62,16 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LibraryIndexRoute = LibraryIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => LibraryRoute,
+} as any).lazy(() => import('./routes/library.index.lazy').then((d) => d.Route))
+const GuidesIndexRoute = GuidesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => GuidesRoute,
+} as any).lazy(() => import('./routes/guides.index.lazy').then((d) => d.Route))
 const LibrarySlugRoute = LibrarySlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -82,18 +94,20 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/library/$slug': typeof LibrarySlugRoute
+  '/guides/': typeof GuidesIndexRoute
+  '/library/': typeof LibraryIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/guides': typeof GuidesRouteWithChildren
-  '/library': typeof LibraryRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/subscribe': typeof SubscribeRoute
   '/terms': typeof TermsRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/library/$slug': typeof LibrarySlugRoute
+  '/guides': typeof GuidesIndexRoute
+  '/library': typeof LibraryIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -107,6 +121,8 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/library/$slug': typeof LibrarySlugRoute
+  '/guides/': typeof GuidesIndexRoute
+  '/library/': typeof LibraryIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -121,18 +137,20 @@ export interface FileRouteTypes {
     | '/terms'
     | '/guides/$slug'
     | '/library/$slug'
+    | '/guides/'
+    | '/library/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/contact'
-    | '/guides'
-    | '/library'
     | '/privacy'
     | '/subscribe'
     | '/terms'
     | '/guides/$slug'
     | '/library/$slug'
+    | '/guides'
+    | '/library'
   id:
     | '__root__'
     | '/'
@@ -145,6 +163,8 @@ export interface FileRouteTypes {
     | '/terms'
     | '/guides/$slug'
     | '/library/$slug'
+    | '/guides/'
+    | '/library/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -216,6 +236,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/library/': {
+      id: '/library/'
+      path: '/'
+      fullPath: '/library/'
+      preLoaderRoute: typeof LibraryIndexRouteImport
+      parentRoute: typeof LibraryRoute
+    }
+    '/guides/': {
+      id: '/guides/'
+      path: '/'
+      fullPath: '/guides/'
+      preLoaderRoute: typeof GuidesIndexRouteImport
+      parentRoute: typeof GuidesRoute
+    }
     '/library/$slug': {
       id: '/library/$slug'
       path: '/$slug'
@@ -235,10 +269,12 @@ declare module '@tanstack/react-router' {
 
 interface GuidesRouteChildren {
   GuidesSlugRoute: typeof GuidesSlugRoute
+  GuidesIndexRoute: typeof GuidesIndexRoute
 }
 
 const GuidesRouteChildren: GuidesRouteChildren = {
   GuidesSlugRoute: GuidesSlugRoute,
+  GuidesIndexRoute: GuidesIndexRoute,
 }
 
 const GuidesRouteWithChildren =
@@ -246,10 +282,12 @@ const GuidesRouteWithChildren =
 
 interface LibraryRouteChildren {
   LibrarySlugRoute: typeof LibrarySlugRoute
+  LibraryIndexRoute: typeof LibraryIndexRoute
 }
 
 const LibraryRouteChildren: LibraryRouteChildren = {
   LibrarySlugRoute: LibrarySlugRoute,
+  LibraryIndexRoute: LibraryIndexRoute,
 }
 
 const LibraryRouteWithChildren =

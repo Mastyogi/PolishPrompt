@@ -43,9 +43,7 @@ export const Route = createFileRoute("/")({
       },
       { name: "twitter:image", content: `${SITE}/og-image.svg` },
     ],
-    links: [
-      { rel: "canonical", href: `${SITE}/` },
-    ],
+    links: [{ rel: "canonical", href: `${SITE}/` }],
     scripts: [
       {
         type: "application/ld+json",

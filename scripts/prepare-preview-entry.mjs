@@ -1,25 +1,27 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { resolve } from "node:path";
 
-const serverDir = resolve(process.cwd(), 'dist/server');
-const serverIndexPath = resolve(serverDir, 'index.mjs');
-const outputPath = resolve(serverDir, 'server.js');
+const serverDir = resolve(process.cwd(), "dist/server");
+const serverIndexPath = resolve(serverDir, "index.mjs");
+const outputPath = resolve(serverDir, "server.js");
 
 if (!existsSync(serverIndexPath)) {
-  throw new Error('Expected dist/server/index.mjs to exist after the build.');
+  throw new Error("Expected dist/server/index.mjs to exist after the build.");
 }
 
-const serverIndex = readFileSync(serverIndexPath, 'utf8');
+const serverIndex = readFileSync(serverIndexPath, "utf8");
 
 // Find augmentReq function by its signature (flexible whitespace), then use brace-counting
 // to find the full function body regardless of whitespace or nested braces
 const sigMatch = serverIndex.match(/function\s+augmentReq\s*\(\s*cfReq\s*,\s*ctx\s*\)/);
 
 if (!sigMatch) {
-  console.warn("⚠️ Could not find augmentReq function in dist/server/index.mjs — skipping Cloudflare patch");
+  console.warn(
+    "⚠️ Could not find augmentReq function in dist/server/index.mjs — skipping Cloudflare patch",
+  );
 } else {
   const start = sigMatch.index;
-  const bodyOpen = serverIndex.indexOf('{', start);
+  const bodyOpen = serverIndex.indexOf("{", start);
   if (bodyOpen === -1) {
     console.warn("⚠️ Could not find opening brace of augmentReq — skipping patch");
   } else {
@@ -27,8 +29,8 @@ if (!sigMatch) {
     let depth = 1;
     let pos = bodyOpen + 1;
     while (depth > 0 && pos < serverIndex.length) {
-      if (serverIndex[pos] === '{') depth++;
-      else if (serverIndex[pos] === '}') depth--;
+      if (serverIndex[pos] === "{") depth++;
+      else if (serverIndex[pos] === "}") depth--;
       pos++;
     }
     if (depth !== 0) {
@@ -62,6 +64,6 @@ writeFileSync(
     "  },",
     "};",
     "",
-  ].join('\n'),
+  ].join("\n"),
 );
 console.log(`Prepared preview server entry at ${outputPath}`);

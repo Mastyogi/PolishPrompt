@@ -10,6 +10,7 @@
 [![License](https://img.shields.io/badge/License-Private-red?style=for-the-badge)](#)
 
 ---
+
 https://polishprompt.tech/
 
 ## 📌 Overview
@@ -175,7 +176,9 @@ bun run build
 ```
 
 ### Preview Production Build
-npm 
+
+npm
+
 ```bash
 bun run preview
 ```
@@ -212,12 +215,13 @@ Score % = (earned weighted points / max weighted points) × 100
 ```
 
 **Result levels:**
-| Score % | Level | Tag |
-|---|---|---|
-| ≥ 85% | Prompt Architect | Advanced |
-| ≥ 65% | Prompt Strategist | Intermediate |
-| ≥ 40% | Prompt Apprentice | Beginner+ |
-| < 40% | Prompt Novice | Beginner |
+
+| Score % | Level             | Tag          |
+| ------- | ----------------- | ------------ |
+| ≥ 85%   | Prompt Architect  | Advanced     |
+| ≥ 65%   | Prompt Strategist | Intermediate |
+| ≥ 40%   | Prompt Apprentice | Beginner+    |
+| < 40%   | Prompt Novice     | Beginner     |
 
 ---
 

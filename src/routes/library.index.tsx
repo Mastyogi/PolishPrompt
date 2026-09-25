@@ -1,8 +1,7 @@
-import { createFileRoute, Outlet } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { SITE_URL } from "@/lib/content";
 
-export const Route = createFileRoute("/library")({
-  component: LibraryLayout,
+export const Route = createFileRoute("/library/")({
   head: () => ({
     meta: [
       { title: "Prompt Library — PolishPrompt" },
@@ -19,7 +18,7 @@ export const Route = createFileRoute("/library")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE_URL}/library` },
       { property: "og:image", content: `${SITE_URL}/og-image.svg` },
-      // NOTE: Canonical moved to index route to avoid duplication on detail pages
+      { rel: "canonical", href: `${SITE_URL}/library` },
     ],
     scripts: [
       {
@@ -42,7 +41,3 @@ export const Route = createFileRoute("/library")({
     ],
   }),
 });
-
-function LibraryLayout() {
-  return <Outlet />;
-}

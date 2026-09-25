@@ -18,9 +18,9 @@ function AboutPage() {
           <div className="rounded-[2rem] border border-border/70 bg-card/70 p-7 shadow-soft">
             <h2 className="text-2xl font-semibold">Our story</h2>
             <p className="mt-3 text-sm text-muted-foreground">
-              The product started from a simple observation: people were using AI without a
-              reliable way to improve their prompting skills. The result was frustration, generic
-              output and confusion.
+              The product started from a simple observation: people were using AI without a reliable
+              way to improve their prompting skills. The result was frustration, generic output and
+              confusion.
             </p>
           </div>
           <div className="rounded-[2rem] border border-border/70 bg-card/70 p-7 shadow-soft">
@@ -40,8 +40,8 @@ function AboutPage() {
           <div className="rounded-[2rem] border border-border/70 bg-card/70 p-7 shadow-soft">
             <h2 className="text-2xl font-semibold">How we curate</h2>
             <p className="mt-3 text-sm text-muted-foreground">
-              We prioritize clarity, usefulness and repeatable structure. No hype, no fake
-              shortcuts and no unsupported claims.
+              We prioritize clarity, usefulness and repeatable structure. No hype, no fake shortcuts
+              and no unsupported claims.
             </p>
           </div>
         </div>
@@ -49,8 +49,8 @@ function AboutPage() {
         <div className="mt-10 rounded-[2rem] border border-border/70 bg-gradient-primary p-8 text-white shadow-glow">
           <h2 className="text-2xl font-semibold">Quality assurance</h2>
           <p className="mt-3 max-w-3xl text-sm text-white/80">
-            Every prompt and guide on the site is part of a deliberate system built for
-            reliability. We keep the content manual, file-driven and easy to understand.
+            Every prompt and guide on the site is part of a deliberate system built for reliability.
+            We keep the content manual, file-driven and easy to understand.
           </p>
           <div className="mt-6 flex flex-wrap gap-3 text-sm">
             <span className="rounded-full bg-white/15 px-3 py-1">Verified prompts</span>
