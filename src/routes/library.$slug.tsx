@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
 import { PROMPTS, SITE_URL } from "@/lib/content";
 
 function buildDescription(prompt: (typeof PROMPTS)[number]): string {
@@ -11,6 +11,9 @@ function buildDescription(prompt: (typeof PROMPTS)[number]): string {
 }
 
 export const Route = createFileRoute("/library/$slug")({
+  beforeLoad: ({ params }) => {
+    if (!PROMPTS.some((item) => item.id === params.slug)) throw notFound();
+  },
   head: ({ params }) => {
     const prompt = PROMPTS.find((item) => item.id === params.slug);
     const description = prompt
@@ -32,8 +35,8 @@ export const Route = createFileRoute("/library/$slug")({
         { property: "og:type", content: "article" },
         { property: "og:url", content: `${SITE_URL}/library/${params.slug}` },
         { property: "og:image", content: `${SITE_URL}/og-image.svg` },
-        { rel: "canonical", href: `${SITE_URL}/library/${params.slug}` },
       ],
+      links: prompt ? [{ rel: "canonical", href: `${SITE_URL}/library/${params.slug}` }] : [],
       scripts: [
         {
           type: "application/ld+json",

@@ -33,8 +33,6 @@ function renderTemplatePreview(
 function LibraryIndex() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
-  const [model, setModel] = useState("All");
-  const [difficulty, setDifficulty] = useState("All");
   const [sort, setSort] = useState("Trending");
   const [activeTab, setActiveTab] = useState("All");
   const [visibleCount, setVisibleCount] = useState(8);
@@ -48,21 +46,19 @@ function LibraryIndex() {
         .toLowerCase()
         .includes(search.toLowerCase());
       const matchesCategory = category === "All" || prompt.category === category;
-      const matchesModel = model === "All" || true;
-      const matchesDifficulty = difficulty === "All" || true;
       const matchesTab =
         activeTab === "All" ||
         (activeTab === "Trending" && prompt.featured) ||
         (activeTab === "Weekly Hot" && prompt.featured) ||
         (activeTab === "Learning Picks" && prompt.featured);
-      return matchesSearch && matchesCategory && matchesModel && matchesDifficulty && matchesTab;
+      return matchesSearch && matchesCategory && matchesTab;
     });
 
     return next.sort((a, b) => {
-      if (sort === "Newest") return b.title.localeCompare(a.title);
+      if (sort === "Title A-Z") return a.title.localeCompare(b.title);
       return Number(b.featured) - Number(a.featured);
     });
-  }, [activeTab, category, difficulty, model, search, sort]);
+  }, [activeTab, category, search, sort]);
 
   const visiblePrompts = filtered.slice(0, visibleCount);
 
@@ -96,7 +92,7 @@ function LibraryIndex() {
           </p>
         </div>
 
-        <div className="mt-8 grid gap-3 rounded-[2rem] border border-border/70 bg-card/70 p-4 shadow-card lg:grid-cols-[1.45fr_0.8fr_0.7fr_0.6fr_0.6fr]">
+        <div className="mt-8 grid gap-3 rounded-[2rem] border border-border/70 bg-card/70 p-4 shadow-card lg:grid-cols-[1.4fr_0.8fr_0.8fr]">
           <label className="flex items-center gap-2 rounded-full border border-border bg-background px-4 py-3 text-sm">
             <Search className="h-4 w-4 text-muted-foreground" />
             <input
@@ -119,33 +115,12 @@ function LibraryIndex() {
             ))}
           </select>
           <select
-            value={model}
-            onChange={(event) => setModel(event.target.value)}
-            className="rounded-full border border-border bg-background px-4 py-3 text-sm"
-          >
-            <option value="All">All models</option>
-            <option value="ChatGPT">ChatGPT</option>
-            <option value="Claude">Claude</option>
-            <option value="Gemini">Gemini</option>
-            <option value="All Models">All Models</option>
-          </select>
-          <select
-            value={difficulty}
-            onChange={(event) => setDifficulty(event.target.value)}
-            className="rounded-full border border-border bg-background px-4 py-3 text-sm"
-          >
-            <option value="All">All levels</option>
-            <option value="Beginner">Beginner</option>
-            <option value="Intermediate">Intermediate</option>
-            <option value="Advanced">Advanced</option>
-          </select>
-          <select
             value={sort}
             onChange={(event) => setSort(event.target.value)}
             className="rounded-full border border-border bg-background px-4 py-3 text-sm"
           >
             <option value="Trending">Trending</option>
-            <option value="Newest">Newest</option>
+            <option value="Title A-Z">Title A-Z</option>
           </select>
         </div>
 

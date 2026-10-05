@@ -18,8 +18,8 @@ export const Route = createFileRoute("/terms")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE_URL}/terms` },
       { property: "og:image", content: `${SITE_URL}/og-image.svg` },
-      { rel: "canonical", href: `${SITE_URL}/terms` },
     ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/terms` }],
   }),
   component: TermsPage,
 });

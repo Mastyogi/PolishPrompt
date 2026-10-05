@@ -18,8 +18,8 @@ export const Route = createFileRoute("/library/")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE_URL}/library` },
       { property: "og:image", content: `${SITE_URL}/og-image.svg` },
-      { rel: "canonical", href: `${SITE_URL}/library` },
     ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/library` }],
     scripts: [
       {
         type: "application/ld+json",

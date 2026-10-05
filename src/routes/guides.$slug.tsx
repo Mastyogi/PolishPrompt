@@ -1,7 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
 import { GUIDE_POSTS, SITE_URL } from "@/lib/content";
 
 export const Route = createFileRoute("/guides/$slug")({
+  beforeLoad: ({ params }) => {
+    if (!GUIDE_POSTS.some((item) => item.slug === params.slug)) throw notFound();
+  },
   head: ({ params }) => {
     const post = GUIDE_POSTS.find((item) => item.slug === params.slug);
     const description =
@@ -22,8 +25,8 @@ export const Route = createFileRoute("/guides/$slug")({
         { property: "og:type", content: "article" },
         { property: "og:url", content: `${SITE_URL}/guides/${params.slug}` },
         { property: "og:image", content: `${SITE_URL}/og-image.svg` },
-        { rel: "canonical", href: `${SITE_URL}/guides/${params.slug}` },
       ],
+      links: post ? [{ rel: "canonical", href: `${SITE_URL}/guides/${params.slug}` }] : [],
       scripts: [
         {
           type: "application/ld+json",

@@ -14,7 +14,7 @@ export const Route = createFileRoute("/contact")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE_URL}/contact` },
       { property: "og:image", content: `${SITE_URL}/og-image.svg` },
-      { rel: "canonical", href: `${SITE_URL}/contact` },
     ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/contact` }],
   }),
 });

@@ -6,9 +6,16 @@
  *   trackPageView(window.location.pathname)
  */
 
+type AnalyticsWindow = Window & {
+  gtag?: (...args: unknown[]) => void;
+};
+
 function gtag(...args: unknown[]) {
-  if (typeof (window as any).gtag === "function") {
-    (window as any).gtag(...args);
+  if (typeof window === "undefined") return;
+
+  const analytics = (window as AnalyticsWindow).gtag;
+  if (typeof analytics === "function") {
+    analytics(...args);
   }
 }
 
