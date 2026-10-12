@@ -971,78 +971,89 @@ export function PlatformExperience() {
               </p>
             </div>
           ) : (
-            <form
-              className="mt-6 flex flex-col gap-3 sm:flex-row"
-              onSubmit={async (event) => {
-                event.preventDefault();
-                const email = subscribeEmail.trim();
-                if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
-                setSubscribing(true);
-                setSubscribeStatus("idle");
-                try {
-                  const { error } = await supabase
-                    .from("newsletter_subscribers")
-                    .insert({ email, source: "homepage" });
-                  if (error) {
-                    if (error.code === "23505") {
-                      setSubscribeStatus("duplicate");
-                    } else {
+            <>
+              {supabase === null ? (
+                <div
+                  className="mt-4 rounded-xl border border-[oklch(0.57_0.21_27)]/30 bg-[oklch(0.57_0.21_27)]/10 px-4 py-3 text-sm text-[oklch(0.44_0.19_27)]"
+                  role="alert"
+                >
+                  Newsletter sign-up is currently unavailable. Please try again later.
+                </div>
+              ) : (
+                <form
+                  className="mt-6 flex flex-col gap-3 sm:flex-row"
+                  onSubmit={async (event) => {
+                    event.preventDefault();
+                    const email = subscribeEmail.trim();
+                    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+                    setSubscribing(true);
+                    setSubscribeStatus("idle");
+                    try {
+                      const { error } = await supabase
+                        .from("newsletter_subscribers")
+                        .insert({ email, source: "homepage" });
+                      if (error) {
+                        if (error.code === "23505") {
+                          setSubscribeStatus("duplicate");
+                        } else {
+                          setSubscribeStatus("error");
+                        }
+                      } else {
+                        setSubscribeStatus("success");
+                        setSubscribeEmail("");
+                        trackEvent("newsletter_subscribe", "Conversion", "homepage");
+                      }
+                    } catch {
                       setSubscribeStatus("error");
+                    } finally {
+                      setSubscribing(false);
                     }
-                  } else {
-                    setSubscribeStatus("success");
-                    setSubscribeEmail("");
-                    trackEvent("newsletter_subscribe", "Conversion", "homepage");
-                  }
-                } catch {
-                  setSubscribeStatus("error");
-                } finally {
-                  setSubscribing(false);
-                }
-              }}
-            >
-              <div className="relative flex-1">
-                <input
-                  type="email"
-                  value={subscribeEmail}
-                  onChange={(e) => setSubscribeEmail(e.target.value)}
-                  placeholder="you@example.com"
-                  className="h-12 w-full rounded-full border border-border bg-background px-4 pr-4 text-sm outline-none transition-colors focus:border-violet-500/50 focus:ring-2 focus:ring-violet-500/20"
-                  aria-label="Email address"
-                  disabled={subscribing}
-                />
-              </div>
-              <Button
-                type="submit"
-                className="h-12 shrink-0 rounded-full px-7"
-                disabled={subscribing}
-              >
-                {subscribing ? (
-                  <span className="flex items-center gap-2">
-                    <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none">
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      />
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-                      />
-                    </svg>
-                    Subscribing...
-                  </span>
-                ) : (
-                  <>
-                    Subscribe <ArrowRight className="h-4 w-4" />
-                  </>
-                )}
-              </Button>
-            </form>
+                  }}
+                >
+                  <div className="relative flex-1">
+                    <input
+                      type="email"
+                      value={subscribeEmail}
+                      onChange={(e) => setSubscribeEmail(e.target.value)}
+                      placeholder="you@example.com"
+                      className="h-12 w-full rounded-full border border-border bg-background px-4 pr-4 text-sm outline-none transition-colors focus:border-violet-500/50 focus:ring-2 focus:ring-violet-500/20"
+                      aria-label="Email address"
+                      disabled={subscribing}
+                    />
+                  </div>
+                  <Button
+                    type="submit"
+                    className="h-12 shrink-0 rounded-full px-7"
+                    disabled={subscribing}
+                  >
+                    {subscribing ? (
+                      <span className="flex items-center gap-2">
+                        <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none">
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          />
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                          />
+                        </svg>
+                        Subscribing...
+                      </span>
+                    ) : (
+                      <>
+                        Subscribe <ArrowRight className="h-4 w-4" />
+                      </>
+                    )}
+                  </Button>
+                </form>
+              )}
+            </>
           )}
 
           {subscribeStatus === "duplicate" && (
