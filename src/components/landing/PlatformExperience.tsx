@@ -711,9 +711,9 @@ export function PlatformExperience() {
               {/* Quick stats row */}
               <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
                 {[
-                  { value: "69", label: "Tested prompts" },
+                  { value: "50", label: "Tested prompts" },
                   { value: "5", label: "Prompt categories" },
-                  { value: "21", label: "Days to master" },
+                  { value: "21", label: "Days to master*" },
                 ].map((stat) => (
                   <div key={stat.label}>
                     <div className="text-2xl font-bold text-white">{stat.value}</div>
@@ -738,7 +738,7 @@ export function PlatformExperience() {
                   </div>
                   <ul className="mt-4 space-y-2.5 text-sm text-muted-foreground">
                     {[
-                      { icon: BookOpen, text: "69 tested, copy-paste ready prompts" },
+                      { icon: BookOpen, text: "50 tested, copy-paste ready prompts" },
                       { icon: Zap, text: "Advanced formulas and AI-debugging methods" },
                       { icon: Sparkles, text: "Beginner-friendly, 20 minutes a day" },
                     ].map((item) => (
