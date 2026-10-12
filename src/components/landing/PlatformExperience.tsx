@@ -710,8 +710,8 @@ export function PlatformExperience() {
               {/* Quick stats row */}
               <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
                 {[
-                  { value: "3,000+", label: "Tested prompts" },
-                  { value: "15+", label: "Industries covered" },
+                  { value: "69", label: "Tested prompts" },
+                  { value: "5", label: "Prompt categories" },
                   { value: "21", label: "Days to master" },
                 ].map((stat) => (
                   <div key={stat.label}>
@@ -737,7 +737,7 @@ export function PlatformExperience() {
                   </div>
                   <ul className="mt-4 space-y-2.5 text-sm text-muted-foreground">
                     {[
-                      { icon: BookOpen, text: "150+ tested, copy-paste ready prompts" },
+                      { icon: BookOpen, text: "69 tested, copy-paste ready prompts" },
                       { icon: Zap, text: "Advanced formulas and AI-debugging methods" },
                       { icon: Sparkles, text: "Beginner-friendly, 20 minutes a day" },
                     ].map((item) => (
@@ -763,7 +763,7 @@ export function PlatformExperience() {
                 </div>
               </div>
               <p className="mt-3 text-center text-xs text-white/65">
-                Lifetime access · Instant delivery · 60% limited launch discount active
+                Lifetime access · Instant delivery · Available on Amazon India
               </p>
             </div>
           </motion.div>

@@ -9,37 +9,37 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "PolishPrompt — AI Prompt Guide, Free AI Diagnosis Test & 150+ ChatGPT Prompts",
+        title: "PolishPrompt — AI Prompt Guide, 69+ Tested ChatGPT Prompts & Practical Guides",
       },
       {
         name: "description",
         content:
-          "Take the free adaptive AI diagnosis test, see your prompt-skill score, and master ChatGPT with the PolishPrompt AI prompt guide — 150+ tested prompts, frameworks and Indian-context templates.",
+          "Master ChatGPT with the PolishPrompt AI prompt guide — 69+ tested prompts, frameworks and Indian-context templates. Browse the free prompt library and guides.",
       },
       {
         name: "keywords",
         content:
-          "AI prompt guide, AI diagnosis test, prompt engineering ebook, ChatGPT prompts for beginners, smart prompts, Indian prompt engineering, Hinglish prompts, prompt writing for beginners, AI prompt skill test, prompt frameworks",
+          "AI prompt guide, prompt engineering, ChatGPT prompts for beginners, smart prompts, Indian prompt engineering, Hinglish prompts, prompt writing for beginners, prompt frameworks",
       },
       { name: "author", content: "Rahul Rana" },
-      { property: "og:title", content: "PolishPrompt — AI Prompt Guide & Free AI Diagnosis Test" },
+      { property: "og:title", content: "PolishPrompt — AI Prompt Guide & 69+ Tested Prompts" },
       {
         property: "og:description",
         content:
-          "99% people use ChatGPT wrong. Take the free AI diagnosis test and learn the system behind 150+ tested prompts.",
+          "Browse 69+ tested ChatGPT prompts, practical guides, and a deeper ebook path for better AI results. Free library, no guesswork.",
       },
-      { property: "og:type", content: "product" },
+      { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE}/` },
       { property: "og:site_name", content: "PolishPrompt" },
       { property: "og:image", content: `${SITE}/og-image.svg` },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "PolishPrompt — AI Prompt Guide & Free AI Diagnosis Test" },
+      { name: "twitter:title", content: "PolishPrompt — AI Prompt Guide & 69+ Tested Prompts" },
       {
         name: "twitter:description",
         content:
-          "Free adaptive AI diagnosis test + 150+ tested ChatGPT prompts. Master AI in 21 days.",
+          "69+ tested ChatGPT prompts, practical guides, and a deeper ebook path. Master AI prompts with structure.",
       },
       { name: "twitter:image", content: `${SITE}/og-image.svg` },
     ],
@@ -69,10 +69,10 @@ export const Route = createFileRoute("/")({
             {
               "@type": "Product",
               "@id": `${SITE}/#ebook`,
-              name: "Smart Prompts = Smart Results",
+              name: "Smart Prompts, Smart Results",
               category: "Ebook / AI Prompt Guide",
               description:
-                "Premium AI prompt guide with 150+ tested ChatGPT prompts, frameworks, and Indian-context templates. Includes a 21-day system to master prompt engineering.",
+                "Premium AI prompt guide with 69+ tested ChatGPT prompts, frameworks, and Indian-context templates. Includes a 21-day system to master prompt engineering.",
               brand: { "@id": `${SITE}/#org` },
               offers: {
                 "@type": "Offer",
@@ -80,15 +80,6 @@ export const Route = createFileRoute("/")({
                 availability: "https://schema.org/InStock",
                 priceCurrency: "INR",
               },
-            },
-            {
-              "@type": "Quiz",
-              name: "AI Prompt-Skill Test",
-              about: "AI diagnosis test that scores your ChatGPT prompt-writing ability",
-              educationalLevel: "Beginner to Advanced",
-              learningResourceType: "Assessment",
-              url: `${SITE}/#quiz`,
-              isAccessibleForFree: true,
             },
             {
               "@type": "FAQPage",
