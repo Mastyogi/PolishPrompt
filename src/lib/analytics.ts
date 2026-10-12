@@ -84,3 +84,23 @@ export function trackEvent(action: string, category: string, label?: string) {
     event_label: label,
   });
 }
+
+/**
+ * Track an ebook CTA click with structured attribution.
+ */
+export function trackEbookClick(
+  source: string,
+  options?: {
+    promptId?: string;
+    guideSlug?: string;
+  },
+) {
+  gtag("event", "ebook_click", {
+    event_category: "Ebook",
+    source,
+    prompt_id: options?.promptId,
+    guide_slug: options?.guideSlug,
+    destination: "https://amzn.in/d/00vHMnM3",
+    timestamp: new Date().toISOString(),
+  });
+}

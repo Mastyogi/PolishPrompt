@@ -19,7 +19,7 @@ import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { CATEGORIES, FAQ_ITEMS, PROMPTS, TESTIMONIALS, AMAZON_URL, SITE_URL } from "@/lib/content";
 import { BeforeAfter } from "./BeforeAfter";
-import { trackCtaClick, trackCtaHover, trackEvent } from "@/lib/analytics";
+import { trackCtaClick, trackCtaHover, trackEbookClick } from "@/lib/analytics";
 import { supabase } from "@/lib/supabase";
 import type { PromptVariable } from "@/lib/content";
 
@@ -485,7 +485,8 @@ export function PlatformExperience() {
             </p>
             <a
               href={AMAZON_URL}
-              onClick={() => trackCtaClick("Compact ebook CTA")}
+              rel="noopener sponsored"
+              onClick={() => trackEbookClick("home_ebook_compact")}
               onMouseEnter={() => {
                 if (!hoveredCtas.current.has("Compact ebook CTA")) {
                   hoveredCtas.current.add("Compact ebook CTA");
@@ -749,7 +750,8 @@ export function PlatformExperience() {
                   </ul>
                   <a
                     href={AMAZON_URL}
-                    onClick={() => trackCtaClick("Main ebook CTA")}
+                    rel="noopener sponsored"
+                    onClick={() => trackEbookClick("home_ebook_main")}
                     onMouseEnter={() => {
                       if (!hoveredCtas.current.has("Main ebook CTA")) {
                         hoveredCtas.current.add("Main ebook CTA");
