@@ -72,7 +72,7 @@ export const Route = createFileRoute("/")({
               name: "Smart Prompts, Smart Results",
               category: "Ebook / AI Prompt Guide",
               description:
-                "Premium AI prompt guide with 50+ tested ChatGPT prompts, frameworks, and Indian-context templates. Includes a 21-day system to master prompt engineering.",
+                "Premium AI prompt guide with frameworks, and Indian-context templates. Includes a structured system to master prompt engineering.",
               brand: { "@id": `${SITE}/#org` },
               offers: {
                 "@type": "Offer",

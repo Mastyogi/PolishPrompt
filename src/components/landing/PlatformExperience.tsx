@@ -545,7 +545,7 @@ export function PlatformExperience() {
               {
                 number: 4,
                 title: "Go deeper",
-                copy: "The ebook connects everything into a complete framework you can master in 21 days.",
+                copy: "The ebook connects everything into a complete framework you can master at your own pace.",
               },
             ].map((step) => (
               <motion.div
@@ -577,6 +577,10 @@ export function PlatformExperience() {
               People who stopped guessing and started prompting with structure.
             </h2>
           </div>
+          <p className="mt-4 text-sm text-muted-foreground text-center">
+            Testimonials reflect individual experiences and have not been independently verified.
+            Results may vary.
+          </p>
           <motion.div
             variants={{
               hidden: { opacity: 0 },
@@ -688,7 +692,7 @@ export function PlatformExperience() {
                   "100+ copy-paste prompts for business, marketing, and daily use",
                   "Advanced techniques most people never discover on their own",
                   "A prompt-debugging method that fixes weak answers instead of starting over",
-                  "A 21-day structured path — 20 minutes a day, zero jargon",
+                  "A structured learning path — zero jargon",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2.5">
                     <svg
@@ -713,7 +717,6 @@ export function PlatformExperience() {
                 {[
                   { value: "50", label: "Tested prompts" },
                   { value: "5", label: "Prompt categories" },
-                  { value: "21", label: "Days to master*" },
                 ].map((stat) => (
                   <div key={stat.label}>
                     <div className="text-2xl font-bold text-white">{stat.value}</div>
@@ -738,9 +741,8 @@ export function PlatformExperience() {
                   </div>
                   <ul className="mt-4 space-y-2.5 text-sm text-muted-foreground">
                     {[
-                      { icon: BookOpen, text: "50 tested, copy-paste ready prompts" },
                       { icon: Zap, text: "Advanced formulas and AI-debugging methods" },
-                      { icon: Sparkles, text: "Beginner-friendly, 20 minutes a day" },
+                      { icon: Sparkles, text: "Beginner-friendly, structured approach" },
                     ].map((item) => (
                       <li key={item.text} className="flex items-center gap-2">
                         <item.icon className="h-4 w-4 text-violet-500" />
