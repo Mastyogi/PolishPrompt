@@ -12,7 +12,6 @@ import {
   MessageSquareShare,
   Shield,
   Sparkles,
-  Star,
   Zap,
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
@@ -614,16 +613,6 @@ export function PlatformExperience() {
                   }}
                   className="rounded-[1.5rem] border border-border/70 bg-card/70 p-6 shadow-soft transition-shadow hover:shadow-card"
                 >
-                  {/* Stars */}
-                  <div className="flex items-center gap-1.5" aria-label="4 out of 5 stars">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`h-3.5 w-3.5 ${i < 4 ? "fill-amber-400 text-amber-400" : "text-border"}`}
-                      />
-                    ))}
-                  </div>
-
                   {/* Quote */}
                   <div className="relative mt-4">
                     <span
