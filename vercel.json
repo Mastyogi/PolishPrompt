@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "npm run build --force",
   "outputDirectory": "dist/client",
   "devCommand": "npm run dev",
   "framework": "tanstack-start",
@@ -10,8 +10,14 @@
     }
   },
   "rewrites": [
-    { "source": "/assets/(.*)", "destination": "/assets/$1" },
-    { "source": "/(.*)", "destination": "/api/ssr" }
+    {
+      "source": "/assets/(.*)",
+      "destination": "/assets/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/api/ssr"
+    }
   ],
   "git": {
     "deploymentEnabled": false
