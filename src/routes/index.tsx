@@ -4,6 +4,7 @@ import { FAQ_ITEMS } from "@/lib/content";
 import { useScrollDepth } from "@/hooks/useScrollDepth";
 
 const SITE = "https://polishprompt.tech";
+// Force rebuild: 1791956779
 
 export const Route = createFileRoute("/")({
   head: () => ({
