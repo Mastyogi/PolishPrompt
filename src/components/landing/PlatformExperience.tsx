@@ -12,6 +12,7 @@ import {
   MessageSquareShare,
   Shield,
   Sparkles,
+  Star,
   Zap,
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
