@@ -21,5 +21,6 @@
   ],
   "git": {
     "deploymentEnabled": false
-  }
+  },
+  "cache": false
 }
