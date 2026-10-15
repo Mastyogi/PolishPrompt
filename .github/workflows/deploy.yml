@@ -32,6 +32,17 @@ jobs:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
+      - name: Fix Vercel project framework
+        run: |
+          if [ -f .vercel/project.json ]; then
+            cat .vercel/project.json | jq '.framework = "tanstack-start"' > .vercel/project.json.tmp && mv .vercel/project.json.tmp .vercel/project.json
+            echo "Updated project.json framework to tanstack-start"
+            cat .vercel/project.json
+          fi
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
       - name: Clean previous build artifacts
         run: rm -rf .vercel/output
         env:
