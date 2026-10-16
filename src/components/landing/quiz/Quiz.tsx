@@ -97,7 +97,7 @@ function recommendation(level: string) {
     case "Beginner+":
       return "Good instincts, weak structure. Start with the RTCO framework and prompt formulas — Chapters 1–4 will compound your output quality immediately.";
     default:
-      return "Start at zero, win at AI. The 21-day system inside the ebook walks you from 'vague questions' to 'prompts that ship work'.";
+      return "Start with the basics and build practical prompting habits. The ebook moves from 'vague questions' to 'prompts that ship work'.";
   }
 }
 
