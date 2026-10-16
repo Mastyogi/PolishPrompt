@@ -23,6 +23,9 @@ jobs:
           npm install -g npm@11
           npm ci
 
+      - name: Type-check project
+        run: npm run typecheck
+
       - name: Build project artifacts
         run: npm run build
 

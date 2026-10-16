@@ -19,7 +19,7 @@ import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { CATEGORIES, FAQ_ITEMS, PROMPTS, TESTIMONIALS, AMAZON_URL, SITE_URL } from "@/lib/content";
 import { BeforeAfter } from "./BeforeAfter";
-import { trackCtaClick, trackCtaHover, trackEbookClick } from "@/lib/analytics";
+import { trackCtaClick, trackCtaHover, trackEbookClick, trackEvent } from "@/lib/analytics";
 import { supabase } from "@/lib/supabase";
 import type { PromptVariable } from "@/lib/content";
 
@@ -978,10 +978,15 @@ export function PlatformExperience() {
                     event.preventDefault();
                     const email = subscribeEmail.trim();
                     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+                    const supabaseClient = supabase;
+                    if (!supabaseClient) {
+                      setSubscribeStatus("error");
+                      return;
+                    }
                     setSubscribing(true);
                     setSubscribeStatus("idle");
                     try {
-                      const { error } = await supabase
+                      const { error } = await supabaseClient
                         .from("newsletter_subscribers")
                         .insert({ email, source: "homepage" });
                       if (error) {
