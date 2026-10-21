@@ -294,3 +294,5 @@ Private — All rights reserved. © 2025 PolishPrompt. Unauthorized copying, dis
   <strong>Smart Prompts = Smart Results</strong><br/>
   <sub>Built with ❤️ for the Indian AI community</sub>
 </div>
+
+<!-- Trigger fresh Vercel deployment: 2026-10-21 -->
