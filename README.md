@@ -296,3 +296,5 @@ Private — All rights reserved. © 2025 PolishPrompt. Unauthorized copying, dis
 </div>
 
 <!-- Trigger fresh Vercel deployment: 2026-10-21 -->
+
+<!-- Trigger fresh Vercel deployment -->
