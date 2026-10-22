@@ -1,5 +1,7 @@
 import { createLazyFileRoute, Link } from "@tanstack/react-router";
 import { GUIDE_POSTS } from "@/lib/content";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 export const Route = createLazyFileRoute("/guides/$slug")({
   component: GuideDetailPage,
@@ -33,13 +35,16 @@ function GuideDetailPage() {
         <p className="mt-4 text-lg text-muted-foreground">{post.description}</p>
         <div className="mt-6 flex flex-wrap gap-3 text-sm text-muted-foreground">
           <span>{post.readTime}</span>
-          <span>•</span>
-          <span>Updated {post.updatedAt}</span>
+          {post.updatedAt && (
+            <>
+              <span>•</span> <span>Updated {post.updatedAt}</span>
+            </>
+          )}
         </div>
-        <div className="mt-8 space-y-4 text-sm text-muted-foreground">
-          {post.content.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
+        <div className="mt-8">
+          <ReactMarkdown components={{}} remarkPlugins={[remarkGfm]}>
+            {post.content.join("\n\n")}
+          </ReactMarkdown>
         </div>
         <div className="mt-8">
           <Link to="/library" className="btn-primary">
